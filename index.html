@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Filmów (115)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function filterByGenre() {
+            var selectedGenre = document.getElementById("genreFilter").value;
+            var rows = document.querySelectorAll("table tbody tr");
+            rows.forEach(row => {
+                var genres = row.getAttribute("data-genres").split(",");
+                if (selectedGenre === "Wszystkie" || genres.includes(selectedGenre)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        function sortByYear(order) {
+            var table = document.querySelector("table tbody");
+            var rows = Array.from(table.querySelectorAll("tr"));
+            var sortedRows = rows.sort((a, b) => {
+                var yearA = a.querySelector(".year").textContent;
+                var yearB = b.querySelector(".year").textContent;
+                if (order === "asc") {
+                    return yearA.localeCompare(yearB);
+                } else {
+                    return yearB.localeCompare(yearA);
+                }
+            });
+            table.innerHTML = "";
+            sortedRows.forEach(row => table.appendChild(row));
+        }
+
+        function showPosterModal(posterUrl) {
+            var modalImg = document.getElementById("modalImg");
+            modalImg.src = posterUrl;
+            $("#posterModal").modal("show");
+        }
+    </script>
+    <style>
+        .modal-dialog-centered {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+        }
+        .modal-content {
+            width: auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista Filmów (115)</h1>
+        <div class="form-group">
+            <label for="genreFilter">Filtruj według gatunku:</label>
+            <select class="form-control" id="genreFilter" onchange="filterByGenre()">
+                <option>Wszystkie</option>
+                
+                <option>Akcja</option>
+                
+                <option>Animacja</option>
+                
+                <option>Dokumentalny</option>
+                
+                <option>Dramat</option>
+                
+                <option>Fantasy</option>
+                
+                <option>Historyczny</option>
+                
+                <option>Horror</option>
+                
+                <option>Komedia</option>
+                
+                <option>Kryminał</option>
+                
+                <option>Muzyczny</option>
+                
+                <option>Przygodowy</option>
+                
+                <option>Romans</option>
+                
+                <option>Sci-Fi</option>
+                
+                <option>Tajemnica</option>
+                
+                <option>Thriller</option>
+                
+                <option>Wojenny</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sortOrder">Sortuj według roku:</label>
+            <select class="form-control" id="sortOrder" onchange="sortByYear(this.value)">
+                <option value="asc">Rosnąco</option>
+                <option value="desc">Malejąco</option>
+            </select>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Okładka</th>
+                    <th>Nazwa</th>
+                    <th>Rok</th>
+                    <th>Opis</th>
+                    <th>Gatunki</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hXlt9ZrWAHs3f45ds1Xrt25rxfQ.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hXlt9ZrWAHs3f45ds1Xrt25rxfQ.jpg')"></td>
+                    <td>Tarot</td>
+                    <td class="year">2024</td>
+                    <td>Film opowiada o grupie przyjaciół, którzy naruszają świętą zasadę Tarota, aby nigdy nie używać cudzych kart. Nieświadomie uwalniają zło uwięzione w przeklętych kartach. Jeden po drugim stają twarzą w twarz z przeznaczeniem i zaczynają wyścig przed przyszłością przepowiedzianą w kartach.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iYl0Zaao7IF5LZL5O68d1zpDGFT.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iYl0Zaao7IF5LZL5O68d1zpDGFT.jpg')"></td>
+                    <td>Immaculate</td>
+                    <td class="year">2024</td>
+                    <td>Młoda i pełna wiary zakonnica Cecilia trafia do włoskiego klasztoru, położonego w malowniczej okolicy. Cecilia od początku ma przeczucie, że nie znalazła się tu przypadkiem, i że prawdziwa natura tego miejsca jest pilnie strzeżonym sekretem. Jej ciepłe powitanie zostaje wkrótce przerwane, gdy staje się jasne, że jej nowy dom skrywa mroczne i przerażające sekrety.</td>
+                    <td>Horror, Tajemnica, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/yH5UqnzBs32YNzJXNlpWnT0MrBL.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/yH5UqnzBs32YNzJXNlpWnT0MrBL.jpg')"></td>
+                    <td>The Lobster</td>
+                    <td class="year">2015</td>
+                    <td>Witamy w świecie, w którym samotni muszą w ciągu 45 dni znaleźć swoje drugie połówki, w przeciwnym razie zostaną przemienieni w zwierzę, które sami wybiorą. "Lobster" to inteligentna, niekonwencjonalna czarna komedia z udziałem takich gwiazd, jak Colin Farrell, Rachel Weisz, Léa Seydoux, John C. Reilly i Ben Whishaw, która jest oryginalnym i głębokim spojrzeniem na obsesję społeczeństwa naszych czasów, aby każdy żył w parze za wszelką cenę i dowodzi, że prawdziwa miłość, nie jest czymś, czego się szuka... Na nią się po prostu trafia.  [opis dystrybutora dvd]</td>
+                    <td>Komedia, Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Kryminał,Historyczny,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/okiu7RaO6YdOthVwOj4SLYmll5Y.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/okiu7RaO6YdOthVwOj4SLYmll5Y.jpg')"></td>
+                    <td>Killers Of The Flower Moon</td>
+                    <td class="year">2023</td>
+                    <td>Gdy w latach 20. XX wieku w Oklahomie zostają odkryte złoża ropy na terenie zamieszkałym przez Osedżiów, ktoś zaczyna mordować członków plemienia, aż do akcji wkracza FBI, by rozwiązać zagadkę.</td>
+                    <td>Kryminał, Historyczny, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller,Kryminał">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hNbOMMbGU3UaJ0uYVGnGk5JPA49.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hNbOMMbGU3UaJ0uYVGnGk5JPA49.jpg')"></td>
+                    <td>James Bond Quantum of Solace</td>
+                    <td class="year">2008</td>
+                    <td>"007 Quantum of Solace" zaczyna się dokładnie 15 min. po zakończeniu "Casino Royale". James Bond (Daniel Craig) pchany głęboko skrywaną żądzą zemsty postanawia rozwiązać własne problemy podczas kolejnej służbowej misji. Mając w pamięci zdradę ukochanej Vesper pragnie zniszczyć organizację, która terroryzowała młodą kobietę. Wbrew temu czego go uczono, agent specjalny podąża śladem Dominica Greene (Mathieu Amalric) bogatego przywódcy niebezpiecznej korporacji, z zimną krwią zabijając po drodze współpracujących z biznesmenem ludzi. Bezwzględny w swoim działaniu nie zwraca uwagi na ostrzeżenia M (Judi Dench), czego skutkiem są bogate w akcję sceny i zapierające dech pościgi CIA i MI6 za Bondem, który nie ma zamiaru dać się złapać zanim nie wyrówna własnych porachunków. U boku Jamesa Bonda kolejna piękna kobieta, czyli Camille (Olga Kurylenko), która także chce wtrącić do całej sprawy swoje trzy grosze.</td>
+                    <td>Przygodowy, Akcja, Thriller, Kryminał</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/lInq6LPmOBqjpRC9IffG26pcX8j.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/lInq6LPmOBqjpRC9IffG26pcX8j.jpg')"></td>
+                    <td>James Bond Licence To Kill</td>
+                    <td class="year">1989</td>
+                    <td>Drugi film z Timothy Daltonem w roli super agenta 007. Na skutek konfliktu z potentatem narkotykowym Franzem Sanchezem (Robert Davi) ginie przyjaciel James Bonda - Felix Leiter (David Hedison). Bond rezygnuje ze swej pozycji w Tajnych Służbach Jej Królewskiej Mości, by dokonać zemsty na zabójcach przyjaciela. W towarzystwie pięknej partnerki (Carey Lowell) rozpoczyna pościg za Sanchezem.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Tajemnica,Dramat,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/fJA22FjlAW8rzrOw9Mwanl6oTc9.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/fJA22FjlAW8rzrOw9Mwanl6oTc9.jpg')"></td>
+                    <td>Pi</td>
+                    <td class="year">1998</td>
+                    <td>Główny bohater jest matematykiem badającym liczbę π i doszukującym się w niej klucza do zrozumienia natury świata. Jest przekonany że dzięki zdobytej wiedzy jest w stanie przewidywać przyszłość. Jego odkryciami zaczynają się interesować agenci potężnego koncernu oraz członkowie sekty religijnej.</td>
+                    <td>Tajemnica, Dramat, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/vjj3jmoxbf7rd1jFZTsox7qENtA.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/vjj3jmoxbf7rd1jFZTsox7qENtA.jpg')"></td>
+                    <td>The Whale</td>
+                    <td class="year">2022</td>
+                    <td>Charlie już od lat żyje na marginesie świata. Uwięziony w małym mieszkaniu przez chorobliwą otyłość. Odrzucony, nie bez powodu, przez swoich bliskich, samotnie zmierza w życiową przepaść. Wystarczy jednak jeden impuls, jedno spotkanie, by zapalić w nim płomień nadziei na to, że jeszcze nie wszystko stracone. Charlie podejmuje próbę nawiązania dawno utraconego kontaktu z nastoletnią córką. Wie, że czeka go niesłychanie trudne spotkanie. Zdaje sobie sprawę, że ryzykuje utratę ostatniego złudzenia. Gotów jest jednak podjąć to ryzyko z wiarą, że także dla niego jest jeszcze szansa na odkupienie.</td>
+                    <td>Dramat</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Thriller,Przygodowy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/yBNsgFtZRqdjskK1wfhXl8tyzPh.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/yBNsgFtZRqdjskK1wfhXl8tyzPh.jpg')"></td>
+                    <td>You Only Live Twice</td>
+                    <td class="year">1967</td>
+                    <td>W Japonii w tajemniczych okolicznościach znika amerykańska rakieta przenosząca ładunki nuklearne. O jej przechwycenie oskarżani są Rosjanie. Stosunki pomiędzy USA i ZSRR stają się coraz bardziej napięte. By zapobiec międzynarodowemu konfliktowi, brytyjskie służby wywiadowcze wysyłają ze specjalną misją agenta 007, Jamesa Bonda (Sean Connery). Jego przeciwnikiem jest szaleniec Ernst Stavro Blofeld (Donald Pleasence), którego centrum dowodzenia znajduje się we wnętrzu wygasłego wulkanu. Blofeld za wszelką cenę stara się doprowadzić do wybuchu III wojny światowej...</td>
+                    <td>Akcja, Thriller, Przygodowy</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/h7pYFSrhA21DcJS43h26LvHSgtR.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/h7pYFSrhA21DcJS43h26LvHSgtR.jpg')"></td>
+                    <td>No Time To Die</td>
+                    <td class="year">2021</td>
+                    <td>James Bond opuszcza czynną służbę i cieszy się spokojnym życiem na Jamajce. Tymczasem jednak jego stary przyjaciel Felix Leiter z CIA zwraca się do niego o pomoc. Misja uratowania porwanego naukowca okazuje się o wiele bardziej zdradliwa, niż mogłoby się wydawać i naprowadza agenta 007 na ślad tajemniczego złoczyńcy, dysponującego nową, niezwykle niebezpieczną technologią.</td>
+                    <td>Akcja, Przygodowy, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/q75lBRdel0Yv4S78BuS2WoPu4oC.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/q75lBRdel0Yv4S78BuS2WoPu4oC.jpg')"></td>
+                    <td>Goldfinger</td>
+                    <td class="year">1964</td>
+                    <td>Agent James Bond ma rozpracować multimilionera Aurica Goldfingera, podejrzanego o kradzież złota z wielu skarbców świata. Sekretarka bogacza zdradza Bondowi metodę, którą posługuje się jej pracodawca. Wkrótce zostaje zamordowana, a Goldfinger znika bez śladu. Agent 007 rusza za nim w pościg. W drodze do Europy poznaje żądną zemsty siostrę zabitej, Tilly. Niebawem ginie ona z rąk ochroniarza Aurica, Oddjoba. Bond zostaje schwytany i przewieziony do siedziby Goldfingera. Tam milioner przygotowuje się do napadu na skarbiec USA - Fort Knox.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/r7ZipEd9oHHVVXTcvbx3Sd3Tukv.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/r7ZipEd9oHHVVXTcvbx3Sd3Tukv.jpg')"></td>
+                    <td>Candy Land</td>
+                    <td class="year">2022</td>
+                    <td>Mówią na siebie „lot lizards”, bo tak potocznie określa się ich w USA. Są grupą sex-workersów, zarabiających na życie szybkim seksem w obskurnych toaletach, we wnętrzach pachnących potem ciężarówek, w niedoświetlonych pokojach taniego motelu. Ich świat skurczył się do postoju dla samochodów, gdzieś tam na amerykańskich bezdrożach, skąd wszędzie jest daleko, a najdalej do spokojnego, stabilnego życia.</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/AqxE1Pm7EmnhKDe6pXBJF4sHLMU.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/AqxE1Pm7EmnhKDe6pXBJF4sHLMU.jpg')"></td>
+                    <td>No Bears</td>
+                    <td class="year">2022</td>
+                    <td>Reżyser (Jafar Panahi) wyjeżdża do małej przygraniczną irańskiej wioski, skąd kieruje produkcją. Zdalna praca to w przypadku tego twórcy konieczność, co wynika z faktu, że nałożono na niego zakaz kręcenia filmów w jego kraju. W nim jednak wzbiera bunt i reżyser postanawia opowiedzieć historię Zary (Mina Kavani) i Bakhtiara (Bakhtiar Panjei), którzy przed irańskim reżimem pragną uciec do Francji w nadziei na znalezienie azylu... Jego uwagę przykuwa również inna para - z wioski. Fotografuje ich. Zdjęcie okazuje się jednak dowodem niewierności dziewczyny, która jest zmuszana do ślubu z innym mężczyzną. Film z pogranicza fikcji i dokumentu. Reżyser Jafar Panahi gra samego siebie. Także w rzeczywistości odebrano mu możliwość realizowania produkcji na terenie Iranu. To nie przeszkadza artyście jednak kontynuować walki przeciwko reżimowi.</td>
+                    <td>Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/uB7iKZNUuxQ0NqUyWEyvUSHsfNf.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/uB7iKZNUuxQ0NqUyWEyvUSHsfNf.jpg')"></td>
+                    <td>James Bond Octopussy</td>
+                    <td class="year">1983</td>
+                    <td>James Bond (Roger Moore) wpada na trop intrygi radzieckiego generała Orłowa (Steven Berkoff), który za plecami swego rządu chce wywołać trzecią wojnę światową. Środki na realizację swego szalonego zamiaru planuje zdobyć, sprzedając na Zachodzie carskie klejnoty wykradzione z kremlowskiego skarbca. Pieniądze ze sprzedaży kosztowności mają być wykorzystane do skonstruowania bomby atomowej, która miałaby być zdetonowana na terenie Niemiec. Upozorowany wypadek ma spowodować rozbrojenie przerażonej Europy, która tym sposobem stałaby się łatwym łupem dla rosyjskiej inwazji. W spisek zaplątana jest trudniąca się przemytem indyjska księżniczka, piękna Octopussy (Maud Adams), oraz afgański książę Kemal (Louis Jourdan). Do akcji wkracza James Bond.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Komedia">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iMAebFhz2uqu7ttLgIkjzZhN6D1.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iMAebFhz2uqu7ttLgIkjzZhN6D1.jpg')"></td>
+                    <td>May December</td>
+                    <td class="year">2023</td>
+                    <td>Elizabeth jest zafascynowana Gracie: historią jej życia, jej małżeństwem, domem, dziećmi. Korzystając z zaproszenia, Elizabeth szczegółowo obserwuje jej życie z bliska i coraz głębiej wkracza w świat, w którym początkowo miała być jedynie gościem.</td>
+                    <td>Dramat, Komedia</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/rhVQtNDiibrnGTuH80v8OEKD1w5.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/rhVQtNDiibrnGTuH80v8OEKD1w5.jpg')"></td>
+                    <td>Spectre</td>
+                    <td class="year">2015</td>
+                    <td>Za sprawą zaszyfrowanej wiadomości z przeszłości James Bond wyrusza z samotną misją do Mexico City, a następnie do Rzymu, gdzie poznaje Lucię Sciarrę, piękną wdowę po słynnym przestępcy. Bond przenika na tajne spotkanie i odkrywa istnienie potężnej i złowrogiej organizacji Spectre. Tymczasem w Londynie, Max Denbigh, nowy szef Centrum Bezpieczeństwa Narodowego, kwestionuje działania Bonda i zasadność istnienia kierowanego przez M MI6. Bond potajemnie werbuje Moneypenny i Q, by pomogli mu w odszukaniu niejakiej Madeleine Swann, córki swego starego wroga, znanego, jako Mr. White, która może posiadać wskazówki, jak zniszczyć Spectre. Gdy Bond zbliża się do samego serca organizacji, odkrywa szokujący, przerażający związek między sobą, a ściganym wrogiem, w którego brawurowo wcielił się Christoph Waltz.</td>
+                    <td>Akcja, Przygodowy, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Komedia,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/fYSLW8pH3bXTAE9ZGRDHXmcUaAm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/fYSLW8pH3bXTAE9ZGRDHXmcUaAm.jpg')"></td>
+                    <td>The Favourite</td>
+                    <td class="year">2018</td>
+                    <td>Anglia, początek XVIII wieku. Chociaż kraj jest w stanie wojny z Francją, królewski dwór pochłaniają inne sprawy. Na tronie zasiada królowa Anna (Olivia Colman), której stan zdrowia nie pozwala jednak na faktyczne sprawowanie rządów. W jej zastępstwie rządzi lady Sarah (Rachel Weisz, nagrodzona Oscarem), jej bliska przyjaciółka. Jednak właśnie wtedy na dworze pojawia się ambitna służąca o arystokratycznych korzeniach, Masham (w tej roli nagrodzona Oscarem Emma Stone), która widząc szansę, nie spocznie przed niczym, żeby osiągnąć swoje cele. Jej rozkwitająca przyjaźń z królową zaczyna zagrażać pozycji lady Sarah. "Faworyta" to jeden z najlepszych filmów w dorobku Jorgosa Lantimosa. Na gali Oscarów 2019 otrzymał 10 nominacji, z czego zdobył jedną statuetkę - dla najlepszej aktorki pierwszoplanowej - Olivii Colman.</td>
+                    <td>Dramat, Komedia, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/aZoeoir3d0NNZhKkdNR0A5WQhNm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/aZoeoir3d0NNZhKkdNR0A5WQhNm.jpg')"></td>
+                    <td>Dead Silence</td>
+                    <td class="year">2007</td>
+                    <td>Od czasu, gdy Mary Shaw została zamordowana przez żądny zemsty tłum, kolejni mieszkańcy niewielkiego miasteczka Ravens Fair giną w przerażających okolicznościach. Gdy żona jednego z nich zostanie zamordowana w brutalny sposób, jej mąż wraca w rodzinne strony, by odkryć przerażającą prawdę o śmierci Mary Shaw i powody, dla których nie możesz, nigdy, ale to nigdy, krzyknąć, jeśli zobaczysz jej ducha.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/nDF4ZOX7zioiMHsZJOfw9fG1WO4.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/nDF4ZOX7zioiMHsZJOfw9fG1WO4.jpg')"></td>
+                    <td>Moonstruck</td>
+                    <td class="year">1987</td>
+                    <td>Włoska dzielnica Nowego Jorku. 37-letnia Loretta jest wdową. Pewnego dnia mieszkający w sąsiedztwie drobny przedsiębiorca Johnny Cammareri prosi ją o rękę. Kobieta zgadza się na małżeństwo. Stawia jednak jeden warunek - chce, aby wszystko odbyło się zgodnie z tradycją. Sądzi, że dzięki temu odpędzi prześladującego ją pecha. Do uroczystości został miesiąc...</td>
+                    <td>Komedia, Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Kryminał,Dramat,Romans,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/eoBZUJJZ5gi6TRCPu3c1SB1GdKn.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/eoBZUJJZ5gi6TRCPu3c1SB1GdKn.jpg')"></td>
+                    <td>Witness</td>
+                    <td class="year">1985</td>
+                    <td>Samuel Lapp staje się świadkiem morderstwa podczas podróży z matką do Filadelfii. Policjant John Book zajmuje się ich ochroną, ponieważ morderca podąża teraz za Samuelem. Book musi dostosować się do nowego stylu życia i zweryfikować swoje uczucia do matki chłopca.</td>
+                    <td>Kryminał, Dramat, Romans, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Romans,Wojenny">
+                    <td><img src="https://image.tmdb.org/t/p/w200/rZDPbPTFwuKgr5b9jixGFNYkGYt.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/rZDPbPTFwuKgr5b9jixGFNYkGYt.jpg')"></td>
+                    <td>Sophie's Choice</td>
+                    <td class="year">1982</td>
+                    <td>Stany Zjednoczone, rok 1947. Stingo (Peter MacNicol), początkujący pisarz z Wirginii, wynajmuje pokój w Brooklynie. Spokój, którego potrzebuje do napisania swej pierwszej powieści, zakłócają sąsiedzi. Tuż obok mieszka bowiem młoda para, której głośna miłość i jeszcze głośniejsze awantury absorbują uwagę południowca. Okazuje się, że Nathan Landau (Kevin Kline) - niezrównoważony żydowski intelektualista - z chorobliwą wręcz obsesją zbiera dowody zbrodni popełnianych na tym narodzie. Jego przyjaciółką jest Zofia Zawistowska (Meryl Streep), Polka z Krakowa, była więźniarka obozu oświęcimskiego, której najbliższych: ojca, męża i dwoje dzieci zgładzili naziści. Stingo staje się przyjacielem i powiernikiem tych dwojga, poznaje ich tajemnice oraz pełną cierpienia, dramatyczną przeszłość...</td>
+                    <td>Dramat, Romans, Wojenny</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Sci-Fi">
+                    <td><img src="https://image.tmdb.org/t/p/w200/eLFOjrfPs61kaSvbBej5wZfaHtL.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/eLFOjrfPs61kaSvbBej5wZfaHtL.jpg')"></td>
+                    <td>Furiosa A Mad Max Saga</td>
+                    <td class="year">2024</td>
+                    <td>Kiedy świat upada, młoda Furiosa zostaje uprowadzona z Zielonego Miejsca Wielu Matek. Wpada w ręce potężnej Hordy Bikerów, której przewodzi watażka Dementus. Po przebyciu Pustkowi porywacze docierają do Cytadeli, gdzie rządzi Wieczny Joe. Dwóch tyranów zaczyna walkę o władzę, Furiosa zaś musi przetrwać wiele prób, jednocześnie gromadząc środki, które pozwolą jej wrócić do domu.</td>
+                    <td>Akcja, Przygodowy, Sci-Fi</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/xUSCQEbbAy3Lv6r00RfXtdxhRDX.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/xUSCQEbbAy3Lv6r00RfXtdxhRDX.jpg')"></td>
+                    <td>Hell House LLC</td>
+                    <td class="year">2015</td>
+                    <td>W 2009 roku podczas zwiedzania strasznego domu w haloween, 15 osób straciło życie. Sara Havel, jedyna, która przeżyła tragedię, po 5 latach decyduje się na ujawnienie nagrań z feralnej nocy.</td>
+                    <td>Horror, Tajemnica, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/a2IMXdCVNmWjQEL85UCTNGqtNIm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/a2IMXdCVNmWjQEL85UCTNGqtNIm.jpg')"></td>
+                    <td>Skyfall</td>
+                    <td class="year">2012</td>
+                    <td>"Skyfall" to jeden z najwspanialszych filmów o przygodach najsłynniejszego agenta wszech czasów. Bond, James Bond - to nazwisko zna każdy. Tym razem na próbę zostaje wystawiona lojalność Bonda wobec M, gdy cyber-terroryści powiązani z jej przeszłością atakują siedzibę MI6. Agent 007 podąża śladem tajemniczego i bezwzględnego Silvy - geniusza zbrodni - którego nic nie powstrzyma przed wprowadzeniem w życie zbrodniczego planu zemsty.</td>
+                    <td>Akcja, Przygodowy, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Kryminał,Tajemnica,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/jKstsinBR4nXRzmOItLjmpt9CQ4.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/jKstsinBR4nXRzmOItLjmpt9CQ4.jpg')"></td>
+                    <td>Siedem</td>
+                    <td class="year">1995</td>
+                    <td>Odchodzący na emeryturę stary policyjny wyga William Somerset ma przekazać swoje obowiązki młodemu detektywowi Davidovi Millsowi. Różni ich wszystko: spokój, rozsądek, zmęczenie życiem i zawodem Somerseta kontrastuje z energią, porywczością i młodzieńczym optymizmem Millsa. Współpraca nie układa się więc najlepiej, ale niestety jest konieczna. Miastem wstrząsa seria okrutnych zabójstw. Pierwsza ofiara to otyły mężczyzna, który zmarł z przejedzenia. Następnego dnia ginie znany z chciwości prawnik. Wygląda na to, że morderca wybiera sobie na ofiary ludzi, którzy popełnili jeden z siedmiu grzechów głównych i w wyrafinowany, perfekcyjnie przygotowany sposób przeprowadza ich egzekucję. Pycha, chciwość, nieczystość, zazdrość, obżarstwo, lenistwo, gniew. Siedem niewybaczalnych występków i siedem dni, w ciągu których samozwańczy „boży wysłannik” zamierza wprowadzić w życie swój obłąkańczy plan naprawy świata...  [opis dystrybutora dvd]</td>
+                    <td>Kryminał, Tajemnica, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/fbkrKjMK8aWgJob7dELQs5uMVNz.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/fbkrKjMK8aWgJob7dELQs5uMVNz.jpg')"></td>
+                    <td>James Bond For Your Eyes Only</td>
+                    <td class="year">1981</td>
+                    <td>U wybrzeży Grecji przypadkowo zostaje zatopiony statek szpiegowski. Wraz z nim na dno idzie supertajne urządzenie kodowe, które służy do sterowania rakietami umieszczonymi na okrętach podwodnych. Istnieje obawa, że zdobędzie je radziecki wywiad. James Bond (Roger Moore) ma wydostać maszynę z głębin. Brytyjski archeolog, który miał ustalić położenie wraku, zostaje zamordowany w tajemniczych okolicznościach. Córka naukowca, Melna Havelock (Carole Bouquet), pragnie pomścić jego śmierć. Przyłącza się więc do agenta 007, który próbuje wytropić mordercę i dowiedzieć się, kim są jego mocodawcy. Śledztwo wiedzie ich kolejno do Hiszpanii, włoskiego kurortu narciarskiego Cortna d'Ampezzo i na wyspę Korfu.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/kmQWA3UbBjvwPmYRbMLYE4ZHZr3.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/kmQWA3UbBjvwPmYRbMLYE4ZHZr3.jpg')"></td>
+                    <td>Mission Impossible - Dead Reckoning Part One</td>
+                    <td class="year">2023</td>
+                    <td>W "Mission: Impossible - Dead Reckoning - Part One"  Ethan Hunt (Tom Cruise) i jego zespół IMF rozpoczynają swoją najniebezpieczniejszą misję. Są na tropie nowej, przerażającej broni, która zagraża ludzkości. Muszą zdążyć zanim broń wpadnie w niepowołane ręce. Stawką jest kontrola nad przyszłością i losami świata. Kiedy  mroczne siły z przeszłości Ethana zbliżają się, rozpoczyna się śmiertelny wyścig dookoła globu. W obliczu tajemniczego, wszechpotężnego wroga Ethan jest zmuszony uznać, że nic nie ma większego znaczenia niż jego misja - nawet życie tych, na których mu najbardziej zależy.</td>
+                    <td>Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Sci-Fi,Romans,Komedia">
+                    <td><img src="https://image.tmdb.org/t/p/w200/avGy3y80hhM9D6wfXXOuzEKIME0.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/avGy3y80hhM9D6wfXXOuzEKIME0.jpg')"></td>
+                    <td>Poor Things</td>
+                    <td class="year">2023</td>
+                    <td>"Biedne istoty" w reżyserii Yorgosa Lanthimosa to niesamowita opowieść o ewolucji Belli Baxter (Emma Stone), młodej kobiety, która zostaje przywrócona do życia przez genialnego i niekonwencjonalnego naukowca, doktora Godwina Baxtera (Willem Dafoe). Pod jego opieką Bella chętnie uczy się wszystkiego od nowa, ale chce też doświadczyć pełni życia. W poszukiwaniu nowych doznań wyrusza w burzliwą i pełną przygód podróż przez kontynenty w towarzystwie sprytnego i rozpustnego prawnika, Duncana Wedderburna (Mark Ruffalo). Wolna od uprzedzeń swoich czasów, Bella z determinacją dąży do celu, jakim jest walka o równość i niezależność.</td>
+                    <td>Sci-Fi, Romans, Komedia</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/odCPu5b9oZCFQJJU4PoPgHHLLba.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/odCPu5b9oZCFQJJU4PoPgHHLLba.jpg')"></td>
+                    <td>James Bond The World Is Not Enough</td>
+                    <td class="year">1999</td>
+                    <td>Najnowszy film o przygodach super agenta 007 Jamesa Bonda w rolę którego już po raz trzeci wcielił się znakomity Pierce Brosnan wspaniale łączy "pasjonującą akcję i malownicze krajobrazy" (Chicago Tribune) z dziką zmysłowością i wyszukanym humorem.  Renard (Robert Carlyle "Goło i wesoło") to bezwzględny terrorysta, który na skutek rany głowy i uszkodzenia mózgu posiadł niezwykłą cechę - zupełnie nie odczuwa bólu. Opracował plan przejęcia kontroli nad zasobami ropy naftowej. Agent 007 jest dla świata jedyną nadzieją. Musi pokonać wroga i zniweczyć jego niecne zamiary. Misja Bonda obfituje jak zwykle w moc niebezpieczeństw i pięknych kobiet - tym razem pod postaciami dziedziczki naftowej fortuny (Sophie Marceau "Braveheart - Waleczne Serce") i oszałamiającej pani naukowiec (Denise Richards "Żołnierze Kosmosu").</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/sFuckZqSJ4ajXvjya4KIavVkFBm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/sFuckZqSJ4ajXvjya4KIavVkFBm.jpg')"></td>
+                    <td>In The Land Of Saints And Sinners</td>
+                    <td class="year">2023</td>
+                    <td>Były zabójca Finbar Murphy wiedzie spokojne życie w nadmorskim miasteczku, wierząc, że wszystko co mroczne już za nim. Okazuje się jednak, że są grzechy, których się nie da pogrzebać. Gdy przeszłość upomina się o niego, Murphy zmuszony jest wybrać między tym co bezpieczne, a tym co słuszne. Ryzykując, że zostanie zdemaskowany, staje w obronie młodej dziewczyny i wypowiada wojnę lokalnym gangom.</td>
+                    <td>Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/sAPI3TRh9AKYFtQOUj9yNm5pGyb.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/sAPI3TRh9AKYFtQOUj9yNm5pGyb.jpg')"></td>
+                    <td>The Exorcist Believer</td>
+                    <td class="year">2023</td>
+                    <td>Sequel filmu z 1973 roku o 12-letniej dziewczynce opętanej przez tajemniczą demoniczną istotę, która zmusza matkę do szukania pomocy u dwóch księży, aby ją uratować.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Muzyczny,Komedia,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/dyK7f1uXHYX46FM3DHAFPEmkQGu.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/dyK7f1uXHYX46FM3DHAFPEmkQGu.jpg')"></td>
+                    <td>Flora And Son</td>
+                    <td class="year">2023</td>
+                    <td>Samotna matka Flora nie wie, co począć ze swoim zbuntowanym nastoletnim synem, Maxem. Jej wysiłki, by trzymać go z dala od kłopotów, prowadzą do zdezelowanej gitary akustycznej, wypalonego muzyka z Los Angeles i harmonii w tej zszarpanej dublińskiej rodzinie.</td>
+                    <td>Muzyczny, Komedia, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Historyczny,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/rBiHiN8W4BqMFrDozemzkof7GmF.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/rBiHiN8W4BqMFrDozemzkof7GmF.jpg')"></td>
+                    <td>Cabrini</td>
+                    <td class="year">2024</td>
+                    <td>Italian immigrant Francesca Cabrini arrives in 1889 New York City and is greeted by disease, crime, and impoverished children. Cabrini sets off on a daring mission to convince the hostile mayor to secure housing and healthcare for society's most vulnerable. With broken English and poor health, Cabrini uses her entrepreneurial mind to build an empire of hope unlike anything the world had ever seen.</td>
+                    <td>Historyczny, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Sci-Fi">
+                    <td><img src="https://image.tmdb.org/t/p/w200/izflWXBRMyP0wAZwLV3gHrrNueH.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/izflWXBRMyP0wAZwLV3gHrrNueH.jpg')"></td>
+                    <td>The Creator</td>
+                    <td class="year">2023</td>
+                    <td>Trwa wojna pomiędzy ludzkością a armią sztucznej inteligencji. Joshua, były komandos, zostaje zwerbowany, aby znaleźć i zabić twórcę, czyli osobę odpowiedzialną za stworzenie sztucznej inteligencji. Wraz ze swoimi towarzyszami musi ścigać się z czasem, bo AI opracowało ostateczną broń, która może zakończyć wojnę i zniszczyć ludzkość. Joshua i jego oddział udają się na teren wroga, w którym odkrywają, że broń, którą mają zniszczyć to AI w formie dziecka.</td>
+                    <td>Akcja, Przygodowy, Sci-Fi</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/67HVm2pp8oOQl20huABSefc9Ath.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/67HVm2pp8oOQl20huABSefc9Ath.jpg')"></td>
+                    <td>Dangerous Liaisons</td>
+                    <td class="year">1988</td>
+                    <td>Markiza proponuje swojemu byłemu kochankowi zakład. Spędzi z nim upojną noc, jeśli dostarczy on dowód zdrady pewnej bogobojnej mężatki.</td>
+                    <td>Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Thriller,Horror,Fantasy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/3CFazTqK7A05D1Cjtc7TPKR0naw.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/3CFazTqK7A05D1Cjtc7TPKR0naw.jpg')"></td>
+                    <td>Butt Boy</td>
+                    <td class="year">2019</td>
+                    <td>Nadużywający alkoholu detektyw zaczyna podejrzewać nowego kolegę z grupy AA o śmierdzącą zbrodnię – uważa mianowicie, że Chip porywa ludzi i więzi ich w swojej dupie.</td>
+                    <td>Komedia, Thriller, Horror, Fantasy</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/m1rcLLs0KmS8Cg60sLoMZC2OyDR.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/m1rcLLs0KmS8Cg60sLoMZC2OyDR.jpg')"></td>
+                    <td>Malum</td>
+                    <td class="year">2023</td>
+                    <td>A rookie police officer willingly takes the last shift at a newly decommissioned police station in an attempt to uncover the mysterious connection between her father's death and a vicious cult.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Fantasy,Przygodowy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/fDUywEHwHh6nsLnVXAdPN9m4ZUG.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/fDUywEHwHh6nsLnVXAdPN9m4ZUG.jpg')"></td>
+                    <td>The Wonderful Story Of Henry Sugar</td>
+                    <td class="year">2023</td>
+                    <td>Stworzona przez Wesa Andersona ekranizacja opowiadania Roalda Dahla o bogaczu, który postanawia opanować niezwykłą umiejętność, by oszukiwać w grach hazardowych.</td>
+                    <td>Komedia, Fantasy, Przygodowy</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/vHxxNI1Deh3YJvvCyRrRS0wPEL5.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/vHxxNI1Deh3YJvvCyRrRS0wPEL5.jpg')"></td>
+                    <td>James Bond The Living Daylights</td>
+                    <td class="year">1987</td>
+                    <td>Timothy Dalton, debiutuje w piętnastym filmie o przygodach brytyjskiego szpiega. Tym razem agent musi sprostać wyjątkowo wymagającemu zadaniu. Ma za zadanie odkryć prawdziwe oblicze i zamiary pojmanego przez wywiad generała Koskowa (Jeroen Krabbé) oraz pięknej wiolonczelistki (Maryam d'Abo). Leonid Puszkin (John Rhys-Davies) staje się jego sprzymierzeńcem, a akcja filmu przenosi Jamesa Bonda do Afganistanu, gdzie wraz z przywódcą ruchu oporu Kamran Shahem (Art Malik) zamierzają wyeliminować Koskowa z gry.</td>
+                    <td>Akcja, Przygodowy, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/xx8gjI01VuLORofFfIVKHF9m1Si.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/xx8gjI01VuLORofFfIVKHF9m1Si.jpg')"></td>
+                    <td>Five Nights At Freddys</td>
+                    <td class="year">2023</td>
+                    <td>Historia stróża nocnego, który rozpoczyna pracę w Freddy Fazbear's Pizza. Już pierwszej nocy zdaje sobie sprawę, że ta praca u Freddy'ego nie będzie taka łatwa.</td>
+                    <td>Horror, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Sci-Fi,Przygodowy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/xdfO6EB9e59qZpzmHxezTdPfTxZ.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/xdfO6EB9e59qZpzmHxezTdPfTxZ.jpg')"></td>
+                    <td>Dune Part Two</td>
+                    <td class="year">2024</td>
+                    <td>"Diuna: Część druga" ukazuje imponującą podróż Paula Atrydy, który zawiera sojusz z Chani i Fremenami. Jednocześnie wkracza na wojenną ścieżkę, pałając żądzą zemsty na spiskowcach, którzy doprowadzili do upadku jego rodziny. Stając przed wyborem między miłością życia a losem znanego wszechświata, Paul pragnie zapobiec tragicznej przyszłości, którą tylko on potrafi przewidzieć.</td>
+                    <td>Sci-Fi, Przygodowy</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2AhoBR1qOsQJCFi6mZ5WThINRpw.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2AhoBR1qOsQJCFi6mZ5WThINRpw.jpg')"></td>
+                    <td>James Bond Live And Let Die</td>
+                    <td class="year">1973</td>
+                    <td>W ciągu 24 godzin zostają zabici trzej funkcjonariusze brytyjskiej Intelligence Service. Szef angielskiego wywiadu, znany pod pseudonimem "M" (Bernard Lee), zaleca Jamesowi Bondowi (Roger Moore) zadanie odnalezienia zabójców. Podejrzanym jest Mr Big (Yaphet Kotto), czarnoskóry król nowojorskiego podziemia. Penetrując nocne kluby Nowego Yorku, Bond spotyka piękną wróżkę Solitaire (Jane Seymour), która jest prawą ręką dr. Kanangi, rezydującego na wyspie San Monique. Okazuje się nim Mr Big, który wiedzie podwójne życie. W pogoni za czarnoskórym gangsterem Bond i Solitaire przenoszą się na karaibską wysepkę gdzie agent 007 zapoznaje się bliżej z sektą wyznawców kultu voodoo...</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Sci-Fi">
+                    <td><img src="https://image.tmdb.org/t/p/w200/nyCLLmzXfepVYeCDYmihXBzPgNF.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/nyCLLmzXfepVYeCDYmihXBzPgNF.jpg')"></td>
+                    <td>The Fly</td>
+                    <td class="year">1986</td>
+                    <td>Naukowiec Seth Brundle prowadzi pracę nad nowym środkiem transportu - teleportacją. Postanawia pokazać swój wynalazek dziennikarce pisma naukowego Veronice, która będzie miała za zadanie dokumentować postępy jego badań. Niestety, Brundle pochopnie postanawia wypróbować swój wynalazek na samym sobie, a poprzez niedopatrzenie, do komory teleportacyjnej dostaje się mucha, w wyniku czego komputer łączy DNA muchy z kodem genetycznym Setha.</td>
+                    <td>Horror, Sci-Fi</td>
+                </tr>
+                
+                <tr data-genres="Horror,Fantasy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/yqnNLn24shYnZ6kqGpbwuB3NJ0D.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/yqnNLn24shYnZ6kqGpbwuB3NJ0D.jpg')"></td>
+                    <td>Pet Sematary Bloodlines</td>
+                    <td class="year">2023</td>
+                    <td>Młody Jud Crandall marzy o opuszczeniu rodzinnego miasta Ludlow w stanie Maine. Zanim jednak zrealizuje swój plan odkrywa w nim mnóstwo mrocznych, rodzinnych sekretów, które już na zawsze powiążą go z Ludlow. Chłopak wraz ze swoimi przyjaciółmi z dzieciństwa musi stawić czoła starożytnemu złu, które nęka Ludlow od czasu jego powstania. Zło to raz odkryte ma moc niszczenia wszystkiego na swojej drodze.</td>
+                    <td>Horror, Fantasy</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hCpjVvaWOsjvPYu1qfXZQ0KtSvi.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hCpjVvaWOsjvPYu1qfXZQ0KtSvi.jpg')"></td>
+                    <td>James Bond Casino Royale</td>
+                    <td class="year">2006</td>
+                    <td>"Casino Royale" przedstawia Jamesa Bonda zanim jeszcze otrzymał swą licencję na zabijanie. Po dwóch zawodowych zabójstwach otrzymuje status agenta "00". "M", szefowa brytyjskiego wywiadu, wysyła świeżo upieczonego agenta 007 z jego pierwszą misją na Madagaskar, wyspy Bahama, by trafił w rezultacie do Czarnogóry stając twarzą w twarz z Le Chiffrem, bezwzględnym bankierem światowej organizacji terrorystycznej. By odzyskać stracone fundusze swoich niebezpiecznych klientów, zdesperowany bankier gra o wysokie stawki w pokera w Casino Royale. Departament Finansów dostarcza Bondowi 10 milionów dolarów, jako stawkę w grze. Pieniądze i agent znajdują się pod uważną obserwacją Vesper Lynd. Bond jest początkowo sceptyczny w stosunku do Vesper i zabezpieczenia, jakie może ona zapewnić. W końcu dostają się w ręce przebiegłego i okrutnego Le Chiffre'a. A Bond otrzymuje swoją najważniejszą w życiu lekcję: nie ufaj nikomu.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/dUb794somu7qXSd3e4dROBi9VI2.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/dUb794somu7qXSd3e4dROBi9VI2.jpg')"></td>
+                    <td>Baghead</td>
+                    <td class="year">2023</td>
+                    <td>Po zagadkowej śmierci ojca, którego nie widziała od lat, Iris dziedziczy stary, podupadający bar na odludziu. Pragnąc dowiedzieć się, dlaczego ojciec porzucił ją, kiedy była jeszcze dzieckiem, Iris udaje się w podróż w nieznane. Szukając prawdy, odkrywa, że opuszczony lokal kryje coś więcej niż rodzinną tajemnicę. To ciążąca nad budynkiem klątwa, która wiąże jego właściciela z pradawnym stworem, nazywanym Baghead. Ten kto wejdzie w pakt z demonem, staje się strażnikiem jego mocy, pozwalającej przywoływać zmarłych na dokładnie dwie minuty. Zafascynowana mrocznym odkryciem Iris postanawia wykorzystać talent stwora i pomagać ludziom, którzy stracili swych bliskich. Ci jednak muszą bezwzględnie przestrzegać zasad rytuału i pamiętać, że przekroczenie czasu seansu – choćby o sekundę – niesie straszliwe konsekwencje.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="">
+                    <td><img src="" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('')"></td>
+                    <td>Hell House LLC Origins The Carmichael Manor</td>
+                    <td class="year">2019</td>
+                    <td>Opis niedostępny.</td>
+                    <td></td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/chFGqQVmEmskFKXZEbp4hYVT5IM.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/chFGqQVmEmskFKXZEbp4hYVT5IM.jpg')"></td>
+                    <td>Hell House LLC II The Abaddon Hotel</td>
+                    <td class="year">2018</td>
+                    <td>Eight years after the opening night tragedy of HELL HOUSE LLC, many unanswered questions remain. Thanks to an anonymous tip, an investigative journalist is convinced that key evidence is hidden inside the abandoned Abaddon Hotel. She assembles a team to break into the hotel in hopes of discovering the truth. But the source of the tip and the secrets of the Abaddon Hotel are more horrifying than any of them could have imagined.</td>
+                    <td>Horror, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Sci-Fi,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iIXuzH42MVDYRQfzwWFvpQdb7TB.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iIXuzH42MVDYRQfzwWFvpQdb7TB.jpg')"></td>
+                    <td>Ad Astra</td>
+                    <td class="year">2019</td>
+                    <td>Astronauta Roy McBride wyrusza na wyprawę poza granice Układu Słonecznego, aby odnaleźć swego zaginionego ojca i odkryć tajemnicę, która zagraża przetrwaniu naszej planety. W czasie swej podróży odkryje sekrety, które postawią pod znakiem zapytania sens ludzkiej egzystencji i nasze miejsce we wszechświecie.</td>
+                    <td>Sci-Fi, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/4BuOoIULkVhVYMKGg0JISxgl34f.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/4BuOoIULkVhVYMKGg0JISxgl34f.jpg')"></td>
+                    <td>The Truman Show</td>
+                    <td class="year">1998</td>
+                    <td>Truman Burbank mieszka w uroczym nadmorskim miasteczku i wiedzie przeciętne, raczej szczęśliwe życie u boku kochającej żony Meryl. To, co dla wielu byłoby nieziszczalnym marzeniem, Truman otrzymał bez specjalnego wysiłku. Właśnie - otrzymał, a nie zdobył. Truman jest bowiem gwiazdą telewizyjnego serialu emitowanego przez 24 godziny na dobę. O każdym jego kroku decyduje reżyser programu, od niego zależy nie tylko to, kogo Truman spotka na swej drodze, ale i to, czy danego dnia będzie świecić słońce. Jednak nawet on nie przewidział, że wykreowany przez niego bohater zacznie się domyślać istnienia innego świata</td>
+                    <td>Komedia, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/h8q19tRevtA5c4MYS7M63s6plPC.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/h8q19tRevtA5c4MYS7M63s6plPC.jpg')"></td>
+                    <td>Thunderball</td>
+                    <td class="year">1965</td>
+                    <td>Organizacja WIDMO potrzebuje pieniędzy i opracowuje diaboliczny plan, by zmusić Brytyjczyków do zapłacenia okupu. Zostaje uprowadzony bombowiec z dwoma głowicami nuklearnymi na pokładzie. Jeśli rząd nie dostarczy porywaczom diamentów wartych 100 milionów funtów; bomby zostaną zdetonowane. Wszyscy agenci "00" zostają zaangażowani, by zapobiec nieszczęściu, lecz tylko James Bond (Sean Connery) wpada na ślad skradzionej broni i trafia do siedziby Emilio Largo (Adolfo Celi) z basenem pełnym rekinów i gdzie poznaje piękną Domino (Claudine Auger).</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/7Hku2RhuVYKOsa8PajDTA1tJd4O.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/7Hku2RhuVYKOsa8PajDTA1tJd4O.jpg')"></td>
+                    <td>Before Sunset</td>
+                    <td class="year">2004</td>
+                    <td>Jesse (Ethan Hawke) i Celine (Julie Delpy) spotkają się w pociągu i spędzają ze sobą 14-godzin w Wiedniu, gdzie rozmawiają o życiu, wartościach, rzeczach błahych i tych ważnych. Ich krótka, lecz burzliwa znajomość kończy się na peronie kolejowym, gdzie oboje przysięgają sobie, że spotkają się ponownie za sześć miesięcy. Do spotkania jednak nie dochodzi... Teraz, dziewięć lat później, niespodziewanie ich drogi ponownie się przecinają w Paryżu, gdzie Jesse promuje swoją najnowszą książkę. Na jednym ze spotkań dla czytelników pojawia się Celine... Oboje mają kilka godzin, by uporać się ze swoimi uczuciami, przeszłością i odpowiedzieć na trudne pytanie: Czy znaczą wciąż dla siebie tyle, co dziewięć lat temu?</td>
+                    <td>Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/m84qrULV142MMieKlpLXTRf0nTF.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/m84qrULV142MMieKlpLXTRf0nTF.jpg')"></td>
+                    <td>Talk To Me</td>
+                    <td class="year">2022</td>
+                    <td>Grupa przyjaciół organizuje imprezy, podczas których łączą się z zaświatami za pomocą zabalsamowanej dłoni. Każdy, kto weźmie ją do ręki i wypowie słowa: "Mów do mnie", oddaje swoje ciało we władanie demona. Panuje tylko jedna żelazna zasada: kontakt nie może przekroczyć 90 sekund. Gdy jeden z uczestników zabawy łamie zasady, życie każdego z nich zamieni się w koszmar.</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Sci-Fi,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hOra640LyI8KL9YibiYelTMHAE3.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hOra640LyI8KL9YibiYelTMHAE3.jpg')"></td>
+                    <td>Contact</td>
+                    <td class="year">1997</td>
+                    <td>Ellie Arroway przez całe swoje życie szukała odpowiedzi na temat pozaziemskiej cywilizacji. Pewnego ranka odbiera sygnał radiowy z odległej gwiazdy Vega. Zawiera on szczegółowe plany międzygalaktycznego pojazdu, mogącego przetransportować pasażerów w odległą przestrzeń kosmiczną. Ellie chce, by to właśnie ona była osobą, która samotnie opuści Ziemię, aby badać obce galaktyki w celu odnalezienia źródła tajemniczego sygnału oraz, jako pierwszy człowiek, nawiązać kontakt z jego nadawcą. Ale jej osobista podróż zaprowadzi ją poza granice teorii, wiedzy, doświadczenia, aż do uświadomienia sobie, że prawdziwa wizja jest ostatecznie połączeniem faktów i wiary.</td>
+                    <td>Dramat, Sci-Fi, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Przygodowy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg')"></td>
+                    <td>Barbie</td>
+                    <td class="year">2023</td>
+                    <td>Babrieland to bajkowa kraina, w której każda Barbie odnosi niesamowite sukcesy, wiodąc bajkowe życie pełne zabawy, brokatu i pięknych kreacji! Nieodłącznym elementem codzienności każdej lalki jest radość i tocząca się dookoła niej egzystencja w cukierkowym świecie pozbawionym zmartwień. Wszystko zmienia się kiedy stereotypowa Barbie doświadcza pierwszych sennych koszmarów, które stopniowo przeradzają się w egzystencjalny kryzys…</td>
+                    <td>Komedia, Przygodowy</td>
+                </tr>
+                
+                <tr data-genres="Wojenny,Akcja,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/5uweuHASCFJRleFvCR9N94wRqjg.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/5uweuHASCFJRleFvCR9N94wRqjg.jpg')"></td>
+                    <td>Civil War</td>
+                    <td class="year">2024</td>
+                    <td>Akcja filmu rozgrywa się w niedalekiej przyszłości, w ogarniętych chaosem wojny domowej Stanach Zjednoczonych. Fotografka wojenna wraz z grupą dziennikarzy próbuje dostać się do Waszyngtonu, będącego centrum dramatycznych wydarzeń.</td>
+                    <td>Wojenny, Akcja, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/g5WZpN3LeTqADmDAlkpdMsvMKLg.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/g5WZpN3LeTqADmDAlkpdMsvMKLg.jpg')"></td>
+                    <td>Arthur The King</td>
+                    <td class="year">2024</td>
+                    <td>Miłośnik sportu i adrenaliny Michael Light (Mark Wahlberg) staje przed największym wyzwaniem w dotychczasowej karierze. Wraz z trzyosobową ekipą zaufanych zawodników przystępuje do Mistrzostw Świata w Rajdach Przygodowych na Dominikanie</td>
+                    <td>Przygodowy, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Komedia">
+                    <td><img src="https://image.tmdb.org/t/p/w200/wuGprgXYEyU22eQlxF6kZdoa2ts.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/wuGprgXYEyU22eQlxF6kZdoa2ts.jpg')"></td>
+                    <td>Totem</td>
+                    <td class="year">2023</td>
+                    <td>Siedmioletnia Sol spędza dzień w domu swojego dziadka. Trwają tam gorączkowe przygotowania imprezy niespodzianki dla jej ojca. Dookoła panuje rozgardiasz, ktoś piecze ciasto, ktoś pije, schodzą się kolejni goście. Jest tam gwarno i kolorowo. Na horyzoncie rysuje się jednak rodzinna tragedia.</td>
+                    <td>Dramat, Komedia</td>
+                </tr>
+                
+                <tr data-genres="Horror,Sci-Fi,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/qqqkiZSU9EBGZ1KiDmfn07S7qvv.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/qqqkiZSU9EBGZ1KiDmfn07S7qvv.jpg')"></td>
+                    <td>Videodrome</td>
+                    <td class="year">1983</td>
+                    <td>Właściciel stacji kablowej ogląda filmy pełne realistycznego okrucieństwa, po czym bez względu na konsekwencje poszukuje źródła tych nagrań.</td>
+                    <td>Horror, Sci-Fi, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/kdMyQ7MQsJE4LjmlCNHxz68hEWy.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/kdMyQ7MQsJE4LjmlCNHxz68hEWy.jpg')"></td>
+                    <td>Into the Wild</td>
+                    <td class="year">2007</td>
+                    <td>W 1992 roku po ukończeniu Uniwersytetu Emory wybitny uczeń i sportowiec Christopher McCandless decyduje się zerwać z dotychczasowym, nudnym życiem. Rozdaje swoje rzeczy, przekazuje swoje oszczędności (24000$) na cele charytatywne i rusza autostopem na Alaskę, aby żyć w dzikiej głuszy. Spotyka go wiele przygód, które na zawsze ukształtują jego życie.</td>
+                    <td>Przygodowy, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/f9dh3Dq1LS0DEKnrnz9B3u3n4r9.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/f9dh3Dq1LS0DEKnrnz9B3u3n4r9.jpg')"></td>
+                    <td>The Color Of Money</td>
+                    <td class="year">1986</td>
+                    <td>Eddie "Fast" Felson, stary i doświadczony bilardzista, który już dawno wycofał się z branży, pewnego dnia spotyka godnego siebie ucznia, młodego i zdolnego Vincenta. Mężczyźni wyjeżdżają na tournee po knajpach, gdzie Eddie uczy Vincenta wszystkich znanych sobie sztuczek. Jednak po pewnym czasie między mistrzem i uczniem dochodzi do konfliktu, który doprowadza do tego, że na turnieju w Atlantic City stają przeciwko sobie.</td>
+                    <td>Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/n5HDVbzYP15UOBpPq5iIWPzSQdm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/n5HDVbzYP15UOBpPq5iIWPzSQdm.jpg')"></td>
+                    <td>James Bond Tomorrow Never Dies</td>
+                    <td class="year">1997</td>
+                    <td>Pierce Brosnan po raz wtóry wciela się w rolę agenta 007 w tej spektakularnej przygodzie pełnej brawurowych wyczynów i niesamowitych elektronicznych gadżetów.  Niepokonany James Bond musi zapobiec olbrzymiej katastrofie. Ktoś podburza światowe mocarstwa przeciw sobie, co może doprowadzić do wybuchu III Wojny Światowej. 007 wpada na ślad prawdziwego przestępczego geniusza. Elliot Carver (Jonathan Pryce) - właściciel globalnego imperium medialnego manipuluje światowymi wydarzeniami. W walce z terrorystą pomagają Bondowi jak zwykle piękne kobiety - żona Elliota (Teri Hatcher) i bezwzględna chińska agentka Wai Lin (Michelle Yeoh).</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Kryminał">
+                    <td><img src="https://image.tmdb.org/t/p/w200/soIgqZBoTiTgMqUW0JtxsPWAilQ.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/soIgqZBoTiTgMqUW0JtxsPWAilQ.jpg')"></td>
+                    <td>Reptile</td>
+                    <td class="year">2023</td>
+                    <td>Zatwardziały detektyw usiłuje rozwikłać zagadkę brutalnego zabójstwa młodego agenta nieruchomości. Nic jednak nie jest takie, jakie się wydaje, a sprawa prowadzi go do odkrycia ułudy własnego życia.</td>
+                    <td>Kryminał</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2900By8xztHCBeQZPaZhwRtNQJD.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2900By8xztHCBeQZPaZhwRtNQJD.jpg')"></td>
+                    <td>Before Sunrise</td>
+                    <td class="year">1995</td>
+                    <td>Francuska studentka Celine i Amerykanin Jesse poznają się w pociągu do Wiednia. Rozmowa jest tak interesująca, że postanawiają wysiąść w Wiedniu i kontynuować dyskusję. Błahe rozmowy przeradzają się w poważne tematy, a wzajemne zauroczenie w uczucie.</td>
+                    <td>Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/cdFZoQDxLRRWXLB3kxCnc674dBF.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/cdFZoQDxLRRWXLB3kxCnc674dBF.jpg')"></td>
+                    <td>The Strangers Chapter 1</td>
+                    <td class="year">2024</td>
+                    <td>Zakochani Maya i Ryan w trakcie beztroskiej podróży przez Stany, trafiają do małej miejscowości ukrytej gdzieś w głębi lasu. Gdy wieczorem chcą ruszyć w dalszą drogę,...</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/nfj8gqc8fq3P6kuGztJtTo575TT.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/nfj8gqc8fq3P6kuGztJtTo575TT.jpg')"></td>
+                    <td>James Bond The Spy Who Loved Me</td>
+                    <td class="year">1977</td>
+                    <td>W tajemniczych okolicznościach znikają dwie atomowe łodzie podwodne, radziecka i brytyjska. Brytyjczycy dowiadują się, że ktoś opracował system śledzenia obcych łodzi podwodnych. Do zbadania tej sprawy wysyłają swego najlepszego agenta Jamesa Bonda (Roger Moore). Podobne zadanie Rosjanie wyznaczają agentce Annie Amasowej (Barbara Bach), której narzeczonego Bond zabił podczas misji w Austrii. Trop prowadzi do Egiptu, gdzie ktoś chciał sprzedać plany systemu. Okazuje się, że okręty porwał szaleniec Stromberg (Curd Jürgens), chcący zniszczyć cywilizację lądową i stworzyć na jej miejsce nową, pod wodą.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Sci-Fi,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/oU9gT4nytFoCP8AnRhEfn0AQo4p.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/oU9gT4nytFoCP8AnRhEfn0AQo4p.jpg')"></td>
+                    <td>Event Horizon</td>
+                    <td class="year">1997</td>
+                    <td>Jest rok 2047. Statek kosmiczny "Lewis and Clark" opuszcza układ słoneczny w poszukiwaniu zaginionego przed siedmiu laty promu "Event Horizon". Miał on z szybkością większą od światła omijać czarne dziury, ale kiedy uruchomił silnik grawitacyjny - słuch o nim zaginął. Na odnalezionym wraku promu - złowieszczej konstrukcji pełnej korytarzy i ciasnych pomieszczeń - nie widać śladu życia, ale biomonitory rejestrują niepokojące znaki. To ślady tragedii, jaka się tu rozegrała. Ale także załogę "Lewis and Clark" zaczynają trapić okrutne koszmary, wpływające destruktywnie na psychikę jej członków. Czy ostrzeżenie "Ratujcie się z piekła!", jakie pozostawił kapitan "Event Horizon", należy odczytywać dosłownie? Wszak od tego koszmaru nie ma ucieczki!</td>
+                    <td>Horror, Sci-Fi, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/gchygJq6AnzGFg0uYRDKn7mqsyU.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/gchygJq6AnzGFg0uYRDKn7mqsyU.jpg')"></td>
+                    <td>Hell House LLC III Lake Of Fire</td>
+                    <td class="year">2019</td>
+                    <td>Set one year after the events of Hell House LLC II, the hotel is on the verge of being torn down when it is purchased by billionaire Russell Wynn as the new home for his popular interactive show, Insomnia. He invites journalist Venessa Sheppard and her crew to record everything happening inside the hotel leading up to the performance - but they soon encounter a more nefarious plot, one that threatens to unleash a veritable hell on earth.</td>
+                    <td>Horror, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Wojenny">
+                    <td><img src="https://image.tmdb.org/t/p/w200/4bfovEOmjkfKL9ZMVBkkGroxLwv.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/4bfovEOmjkfKL9ZMVBkkGroxLwv.jpg')"></td>
+                    <td>Come And See</td>
+                    <td class="year">1985</td>
+                    <td>Akcja filmu toczy się na terenie okupowanej przez Niemców Białorusi w 1943 roku. 14-letni Florja (Aleksey Kravchenko) jest świadkiem dokonanej przez nazistów eksterminacji mieszkańców rodzinnej wsi, w tym również swoich najbliższych. Doznany szok powoduje głębokie zmiany w psychice chłopca, który ucieka do własnego świata, z trudem odróżniając jawę od sennych fantazji...</td>
+                    <td>Dramat, Wojenny</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/6zrZ2Fs2fHyHNXo9FUnydGLMm1j.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/6zrZ2Fs2fHyHNXo9FUnydGLMm1j.jpg')"></td>
+                    <td>Diamonds Are Forever</td>
+                    <td class="year">1971</td>
+                    <td>Sean Connery powraca, by raz jeszcze wcielić się w postać niepokonanego brytyjskiego agenta 007. Tym razem jego zadaniem jest wykrycie, kto przetrzymuje i dlaczego ogromną ilość skradzionych diamentów. Super agent, razem z piękną Tiffany Case (Jill St. John), odkrywa, że Ernst Blofeld (Charles Gray) skonstruował gigantyczny laserowy generator, krążący po orbicie okołoziemskiej, a diamenty wzmacniają jego moc umożliwiając detonację głowic nuklearnych, rakiet i okrętów podwodnych. Tylko Bond może pokonać swego zaciekłego wroga i zniweczyć jego plany panowania nad światem.</td>
+                    <td>Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/11S8F73TALM6oxdry1fGaOO4gNi.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/11S8F73TALM6oxdry1fGaOO4gNi.jpg')"></td>
+                    <td>Saw X</td>
+                    <td class="year">2023</td>
+                    <td>Cierpiący na chorobę nowotworową John wyrusza do Meksyku, by poddać się eksperymentalnemu leczeniu, które jest dla niego ostatnią szansą na przeżycie. Po zabiegu odkrywa, że padł ofiarą medycznych oszustów, którzy zbijają majątek na ludzkim cierpieniu. Nie wiedzą, że zadarli z człowiekiem, który w kwestiach cierpienia jest ekspertem. John zabiera się do pracy konstruując zestaw najbardziej skomplikowanych, szalonych i okrutnych pułapek jakie kiedykolwiek widzieliście.</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Thriller,Przygodowy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/uYhx7Zp9CtmU6UicDAKBFg75aGv.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/uYhx7Zp9CtmU6UicDAKBFg75aGv.jpg')"></td>
+                    <td>From Russia with Love</td>
+                    <td class="year">1963</td>
+                    <td>James Bond wyrusza do Stambułu, by z tamtejszej ambasady radzieckiej ukraść urządzenie służące do dekodowania meldunków. Tymczasem rosyjski wywiad postanawia zlikwidować słynnego agenta. Zadanie to zostaje powierzone najlepszemu szpiegowi - pięknej i niebezpiecznej Tatianie Romanowej. Agent 007 sądzi, iż kobieta pracuje dla zachodnich służb specjalnych i zależy jej na opuszczeniu ZSRR. Żadne z nich nie przypuszcza, że oboje zostali wplątani w spisek potężnej organizacji przestępczej, która wysłała za Bondem psychopatycznego mordercę...</td>
+                    <td>Akcja, Thriller, Przygodowy</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/dhy55blk6poJFyexfNHqgbX12Bf.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/dhy55blk6poJFyexfNHqgbX12Bf.jpg')"></td>
+                    <td>Dr. No</td>
+                    <td class="year">1962</td>
+                    <td>"Nazywam się Bond... James Bond". W filmie, który rozpoczyna serię przygód super agenta 007, James Bond (Sean Connery) wyjaśnia sprawę podwójnego morderstwa na Jamajce. Trafia do siedziby tajemniczego Dr. No, naukowego geniusza na usługach organizacji WIDMO, który zamierza zniszczyć program kosmiczny Stanów Zjednoczonych. Poznaje piękną Honey Ryder (Ursula Andress) i toczy zaciekłą walkę z bezwzględnym terrorystą.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Kryminał,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/6mKqWM7KETGPqdlpWfuu96Ekyqs.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/6mKqWM7KETGPqdlpWfuu96Ekyqs.jpg')"></td>
+                    <td>The Killer</td>
+                    <td class="year">2023</td>
+                    <td>Niecelny strzał sprawia, że zabójca musi stoczyć walkę ze zleceniodawcami i z samym sobą, goniąc za zemstą, w której — jak twierdzi — nie ma nic osobistego.</td>
+                    <td>Kryminał, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iTNHwO896WKkaoPtpMMS74d8VNi.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iTNHwO896WKkaoPtpMMS74d8VNi.jpg')"></td>
+                    <td>Rain Man</td>
+                    <td class="year">1988</td>
+                    <td>Charlie Babbit (Cruise) to młody biznesmen, który przeżywa poważne kłopoty finansowe w swojej firmie. Kiedy umiera jego ojciec okazuje się, że cały majątek zapisał na rzecz szpitala psychiatrycznego, w którym przebywa cierpiący na autyzm brat Charliego ? Raymond (Hoffman). Charlie porywa brata, mając nadzieję na uzyskanie połowy spadku. Początkowo Raymond doprowadza go do szału, jednak z czasem wyciąga Charliego z jego egoistycznej rzeczywistości, a wraz z wzajemnym zrozumieniem, między braćmi nawiązuje się uczucie przyjaźni i miłości.</td>
+                    <td>Dramat</td>
+                </tr>
+                
+                <tr data-genres="Tajemnica,Thriller,Kryminał">
+                    <td><img src="https://image.tmdb.org/t/p/w200/9WL35fkBGyNsoxYP0ZVSkYE9Vst.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/9WL35fkBGyNsoxYP0ZVSkYE9Vst.jpg')"></td>
+                    <td>A Haunting In Venice</td>
+                    <td class="year">2023</td>
+                    <td>Akcja filmu rozgrywa się tuż po zakończeniu II wojny światowej w Wenecji w wigilię Wszystkich Świętych. Herkules Poirot, spędzający dobrowolnie emeryturę w najwspanialszym mieście świata, bierze udział w seansie spirytystycznym odbywającym się w popadającym w ruinę pałacu. Kiedy jeden z uczestników spotkania zostaje zamordowany, detektyw będzie zmuszony rozwiązać zagadkę jego śmierci, zagłębiając się w świat cieni i tajemnic nawiedzonej posiadłości.</td>
+                    <td>Tajemnica, Thriller, Kryminał</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Kryminał,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/1s4OrFrEOpP3Pb89ETNxSDQyvQX.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/1s4OrFrEOpP3Pb89ETNxSDQyvQX.jpg')"></td>
+                    <td>The Usual Suspects</td>
+                    <td class="year">1995</td>
+                    <td>Tytułowi "Podejrzani" to pięciu kryminalistów – Dean Keaton (Byrne), McManus (Baldwin), Todd Hockney (Pollak), Fenster (Del Toro) i Verbal Kint (Spacey). Są zamieszani w eksplozję statku, w wyniku której zginęło 27 osób i zniknęła kokaina o wartości 91 milionów dolarów. Świadkami tego wydarzenia są: ciężko poparzony węgierski imigrant, który twierdzi, że widział Keysera Soze, czyli samego diabła, i jeden z "podejrzanych" - kaleki kryminalista Verbal Kint. Verbal decyduje się, w zamian za nietykalność, opowiedzieć policji całą historię. Wraca pamięcią do momentu, kiedy wraz z pozostałymi "podejrzanymi" został aresztowany przez nowojorską policję, a później pracował z nimi, dokonując kilku napadów.</td>
+                    <td>Dramat, Kryminał, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/lgf19a9MJ6tG8MknfsXyvKhU2xx.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/lgf19a9MJ6tG8MknfsXyvKhU2xx.jpg')"></td>
+                    <td>On Her Majesty's Secret Service</td>
+                    <td class="year">1969</td>
+                    <td>Agent 007 (George Lazenby) i szukająca przygód Tracy Di Vicenzo (Diana Rigg) łączą swe siły, by zniszczyć zagrażającą ludzkości organizację WIDMO. Ernst Stavro Blofeld (Telly Savalas) stworzył bowiem w swoim tajnym laboratorium w Alpach Szwajcarskich śmiertelnego wirusa, który powoduje bezpłodność wszystkich żywych organizmów. Przyszłość całej cywilizacji leży teraz w rękach agenta 007. Czy uda mu się zapobiec katastrofie i pokonać demonicznego Bloefelda?</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Przygodowy,Fantasy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/793jI4sYzhvGcLVPfepLMFra3CB.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/793jI4sYzhvGcLVPfepLMFra3CB.jpg')"></td>
+                    <td>Beau Is Afraid</td>
+                    <td class="year">2023</td>
+                    <td>Beau się boi. Bo życie go przytłacza. Bo świat jest niebezpieczny. Bo każdy ciągle czegoś od niego chce. Bo mamie będzie przykro, jak nie przyjedzie w odwiedziny, a on by wolał siedzieć w wannie. Niewyobrażalny splot zdarzeń zmusza go jednak do konfrontacji z własnymi lękami. Po drugiej stronie jego strachów czeka prawdziwe życie i niezwykła, widowiskowa, pełna przygód podróż.</td>
+                    <td>Komedia, Przygodowy, Fantasy</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Wojenny,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/8aF0iAKH9MJMYAZdi0Slg77RYa2.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/8aF0iAKH9MJMYAZdi0Slg77RYa2.jpg')"></td>
+                    <td>The Ministry Of Ungentlemanly Warfare</td>
+                    <td class="year">2024</td>
+                    <td>Podczas II wojny światowej armia brytyjska przydziela grupę kompetentnych żołnierzy do wykonania misji przeciwko siłom nazistowskim za liniami wroga... Prawdziwa historia o tajnej brytyjskiej organizacji z czasów II wojny światowej – Special Operations Executive. Założona przez Winstona Churchilla, ich nieregularna wojna przeciwko Niemcom pomogła zmienić bieg wojny i dała początek nowoczesnym czarnym operacjom.</td>
+                    <td>Akcja, Wojenny, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/9tG77VE7bP8ve79X86ABwHzDqbb.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/9tG77VE7bP8ve79X86ABwHzDqbb.jpg')"></td>
+                    <td>Out Of Darkness</td>
+                    <td class="year">2022</td>
+                    <td>Historia rozgrywa się 45 000 lat temu i opowiada o grupie sześciu osób, które podróżują po świecie w poszukiwaniu nowego domu. Są głodni, zmęczeni i zdesperowani, aby osiąść na bezpiecznych ziemiach, z dala od zagrożenia. Wyruszają przez pustkowia tundry w kierunku odległych gór, które obiecują im liczne jaskinie potrzebne do przetrwania i przedłużenia gatunku.</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/9hfn6Dz4QrgQdAafrf5Y87a3CpW.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/9hfn6Dz4QrgQdAafrf5Y87a3CpW.jpg')"></td>
+                    <td>It Lives Inside</td>
+                    <td class="year">2023</td>
+                    <td>Sam wraz ze swoich chłopakiem chce odnaleźć przyjaciółkę, która zostaje porwana przez tajemniczego demona. Aby ją uratować muszą zgłębić pradawne rytuały, które otwierają wrota do piekieł.</td>
+                    <td>Horror, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Thriller,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/6dstQOB1ARUoVpAFWYSjZMH1Ts2.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/6dstQOB1ARUoVpAFWYSjZMH1Ts2.jpg')"></td>
+                    <td>After Hours</td>
+                    <td class="year">1985</td>
+                    <td>Programista komputerowy przeżywa najgorszą noc swojego życia, kiedy postanawia wybrać się do Soho na randkę z dziewczyną, którą poznał w kawiarni.</td>
+                    <td>Komedia, Thriller, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Horror,Komedia">
+                    <td><img src="https://image.tmdb.org/t/p/w200/iKkbN17OmFosaW6asCNZTTsyvpu.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/iKkbN17OmFosaW6asCNZTTsyvpu.jpg')"></td>
+                    <td>Little Shop of Horrors DIRECTORS CUT</td>
+                    <td class="year">1986</td>
+                    <td>Interes w sklepie z kwiatami nie idzie zbyt dobrze. Seymour Krelborn idąc raz ulicą nabywa obcą roślinę od obcego człowieka. Nazywa ją Audrey (od imienia swojej dziewczyny). Z każdym nowym dniem Seymour dowiaduje się prawdy o swojej roślince - a prawda jest taka, że roślinka do życia potrzebuje krwi. Z każdym dniem coraz więcej krwi...</td>
+                    <td>Horror, Komedia</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Thriller,Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2yOKarmL8B4oXaLXUdHu882SUbu.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2yOKarmL8B4oXaLXUdHu882SUbu.jpg')"></td>
+                    <td>Mother!</td>
+                    <td class="year">2017</td>
+                    <td>Ona i on wiodą z pozoru idylliczne życie w odosobnionym raju. Ich związek zostaje jednak poddany testowi, kiedy mężczyzna i kobieta, niezaproszeni, pojawią się w ich domu. Odpowiedź na pukanie do drzwi przerwie spokojną egzystencję obojga. Ale do drzwi zapuka więcej gości. Matka będzie zmuszona zweryfikować wszystko, co wie o miłości, oddaniu i poświęceniu.</td>
+                    <td>Dramat, Thriller, Horror</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/qaexcKkyyZiYrNXOGPlIE8BuYkm.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/qaexcKkyyZiYrNXOGPlIE8BuYkm.jpg')"></td>
+                    <td>The Nun II</td>
+                    <td class="year">2023</td>
+                    <td>Rok 1956, Francja. Pewien ksiądz zostaje zamordowany. Zło rozprzestrzenia się po świecie. Sequel globalnego przeboju opowiada o siostrze Irene, która raz jeszcze staje twarzą w twarz z Valak, demoniczną zakonnicą.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/23wPGvpgHrVDgxg9NYqrpxMNP7i.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/23wPGvpgHrVDgxg9NYqrpxMNP7i.jpg')"></td>
+                    <td>Night Swim</td>
+                    <td class="year">2024</td>
+                    <td>Wyatt Russell wciela się w rolę Raya Wallera, byłego gracza baseballowego, zmuszonego do przejścia na wcześniejszą emeryturę z powodu choroby. Ray przeprowadza się do nowego domu z żoną Eve, nastoletnią córką Izzy (Amélie Hoeferle) i synem Elliotem. Mając skrytą nadzieję na powrót do sportu, Ray przekonuje Eve, że basen na podwórku nowego domu będzie nie tylko świetną zabawą dla dzieci, ale zapewni mu fizykoterapię. Jednak mroczny sekret z przeszłości domu uwolnia złowrogą siłę.</td>
+                    <td>Horror</td>
+                </tr>
+                
+                <tr data-genres="Thriller,Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/70oVtjuv9FWbXKZywV38DXWNWzn.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/70oVtjuv9FWbXKZywV38DXWNWzn.jpg')"></td>
+                    <td>Dead Ringers</td>
+                    <td class="year">1988</td>
+                    <td>Bracia Mantle są praktycznie identycznymi bliźniakami. Razem też studiowali ginekologię i teraz razem pracują. Jeden z nich jest trochę bystrzejszy i podrywa kobiety, którymi dzieli się ze swoim bratem, one zaś o niczym nie wiedzą. Pewnego dnia jednak do kliniki przybywa pewna piękna aktorka...</td>
+                    <td>Thriller, Horror</td>
+                </tr>
+                
+                <tr data-genres="Thriller,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/eE5bbuRJluooG2MjEAsLEYyuJoa.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/eE5bbuRJluooG2MjEAsLEYyuJoa.jpg')"></td>
+                    <td>The Vanishing</td>
+                    <td class="year">1988</td>
+                    <td>Para młodych kochanków - Rex i Saskia wybrali się za miasto, by cieszyć się sobą i latem, by spędzić razem kilka dni. Gdy zatrzymali się na krótki odpoczynek na parkingu przydrożnego baru, nieopodal przystanku autobusowego, Saskia niezauważenie i w tajemniczych okolicznościach zniknęła. Rex winiąc siebie za dopuszczenie do tak niezwykłego zniknięcia, pełen bólu, gniewu i poczucia winy trzy następne lata spędził na poszukiwaniach - bez rezultatu. Nagle otrzymuje pocztówkę od porywacza. Okazuje się nim niepozorny, mający spokojną i szczęśliwą rodzinę Raymond, w którego chorym umyśle alter ego wywołało chęć udręczenia i porwania kobiety.</td>
+                    <td>Thriller, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/z6SKM8IuP5GIrc2fBLBeCU8zTpg.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/z6SKM8IuP5GIrc2fBLBeCU8zTpg.jpg')"></td>
+                    <td>Retribution</td>
+                    <td class="year">2023</td>
+                    <td>Mieszkający w Berlinie, amerykański biznesmen Matt Turner (Liam Neeson) odwozi dzieci do szkoły, kiedy odbiera tajemniczy telefon. Głos ze słuchawki informuje go, że w jego samochodzie jest bomba, a brak współpracy czy próba kontaktu z policją grożą natychmiastową eksplozją. Aby uratować siebie i bliskich, Matt będzie musiał wykonać szereg zleceń nieznanego szantażysty. Jeśli odmówi, uzbrojony ładunek wybuchnie, zabijając Matta i niszcząc wszystko dookoła. Zmuszony do ciągłej jazdy, niemogący opuścić pojazdu mężczyzna rozpoczyna bezprecedensową walkę z czasem i desperacki wyścig po to, by ocalić życie.</td>
+                    <td>Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dokumentalny">
+                    <td><img src="https://image.tmdb.org/t/p/w200/lEi9ajMkUmfg3ICGb9m56zYoaQy.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/lEi9ajMkUmfg3ICGb9m56zYoaQy.jpg')"></td>
+                    <td>Obi-Wan Kenobi</td>
+                    <td class="year">2022</td>
+                    <td>Dokument ukazuje kulisy powrotu Ewana McGregora i Haydena Christensena do ról Obi-Wana Kenobiego i Anakina Skywalkera. Zobacz, jak pod wodzą reżyserki Deborah Chow ekipa filmowa kreuje nowych bohaterów i złoczyńców, którzy u boku kultowych postaci z filmowej sagi "Gwiezdne wojny" opowiadają nieznaną dotąd historię.</td>
+                    <td>Dokumentalny</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2TE7k18EKsBLTMLRWBKBndNuTTw.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2TE7k18EKsBLTMLRWBKBndNuTTw.jpg')"></td>
+                    <td>James Bond The Man With The Golden Gun</td>
+                    <td class="year">1974</td>
+                    <td>Do kwatery MI6 zostaje przysłany złoty pocisk z wygrawerowanym napisem 007. Nadawcą może być tylko jeden człowiek - Francisco Scaramanga, płatny zabójca nr 1 na świecie. Ten mistrz celności posługuje się składanym złotym pistoletem strzelającym złotymi kulami. Bond (Roger Moore) postanawia dopaść go pierwszy. Jest jednak pewien problem: nikt nie wie, jak wygląda Scaramanga. Obaj bohaterowie będą również rywalizować o solar - supertajne urządzenie przetwarzające energię słoneczną w elektryczną.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Komedia,Dramat">
+                    <td><img src="https://image.tmdb.org/t/p/w200/zABXGuOm1ew7JQfIDceRTVPFPxl.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/zABXGuOm1ew7JQfIDceRTVPFPxl.jpg')"></td>
+                    <td>Hannah And Her Sisters</td>
+                    <td class="year">1986</td>
+                    <td>Najstarsza córka - Hanna jest oddaną żoną, kochającą matką i odnosząca sukcesy aktorką. Jest także prawdziwą i lojalną podporą dla swoich dwóch, ciągle jeszcze szukających celu w życiu sióstr - Lee i Holly - jest emocjonalnym kręgosłupem całej rodziny, która zdaje się tego wcale nie doceniać. Gdy jednak doskonale uporządkowany świat Hanny zostaje zniszczony przez siostrzaną rywalizację, kobieta zdaje sobie nagle sprawę, że jest tak samo samotna i zagubiona jak wszyscy inni. Aby się odnaleźć, musi dokonać wyboru między niezależnością rodziny, z którą żyje, a rodziną, bez której żyć nie może.</td>
+                    <td>Komedia, Dramat</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/sayUyM7iB7pLyOdzXaW5KgXQZXG.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/sayUyM7iB7pLyOdzXaW5KgXQZXG.jpg')"></td>
+                    <td>James Bond Never Say Never Again</td>
+                    <td class="year">1983</td>
+                    <td>Agenci pod dowództwem Ernsta Blofelda (Max von Sydow) włamują się do amerykańskiej bazy lotniczej i kradną z niej dwa myśliwce Tomhawk. Agent 007 (Sean Connery) zostaje wezwany przez kierownictwo, żeby odzyskać skradzione samoloty i zabić Blofelda. Niedługo potem przestępcza organizacja SPECTRE przejmuje dwa pociski jądrowe i James Bond wyrusza na misję, żeby je odnaleźć. Musi odzyskać uzbrojone głowice, zanim zostaną one wykorzystane, aby spowodować zagładę. Seria morderstw prowadzi go na trop Larga (Klaus Maria Brandauer), charyzmatycznego wrogiego agenta i jego niebezpiecznej asystentki Fatimy Blush (Barbara Carrera), pięknej morderczyni, która najpierw spędza noc z ofiarą, a później ją zabija. Bondowi pomaga nieoczekiwanie piękna kochanka Largo – Domino (Kim Basinger).</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Historyczny,Wojenny,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2LGtFpKi4n335oXwRakPiXPPkO1.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2LGtFpKi4n335oXwRakPiXPPkO1.jpg')"></td>
+                    <td>Napoleon</td>
+                    <td class="year">2023</td>
+                    <td>Film Napoleon opowie historię bezwzględnego dojścia Napoleona Bonaparte do władzy i jego obsesyjnej miłości do żony, cesarzowej Józefiny.</td>
+                    <td>Historyczny, Wojenny, Romans</td>
+                </tr>
+                
+                <tr data-genres="Sci-Fi,Thriller,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/A3qrVjsBd4IZ3QWHMs2x1dwRxuX.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/A3qrVjsBd4IZ3QWHMs2x1dwRxuX.jpg')"></td>
+                    <td>The Artifice Girl</td>
+                    <td class="year">2022</td>
+                    <td>A team of special agents discovers a revolutionary new computer program to bait and trap online predators. After teaming up with the program's troubled developer, they soon find that the AI is rapidly advancing beyond its original purpose.</td>
+                    <td>Sci-Fi, Thriller, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Horror,Komedia">
+                    <td><img src="https://image.tmdb.org/t/p/w200/qsV7lPMcpQxUPIFbITv8XOnyjqM.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/qsV7lPMcpQxUPIFbITv8XOnyjqM.jpg')"></td>
+                    <td>A Most Atrocious Thing</td>
+                    <td class="year">2024</td>
+                    <td>Oh Deer! A weekend getaway becomes deadly when bad blood turns a group of friends against each other.</td>
+                    <td>Horror, Komedia</td>
+                </tr>
+                
+                <tr data-genres="Sci-Fi,Akcja">
+                    <td><img src="https://image.tmdb.org/t/p/w200/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg')"></td>
+                    <td>Atlas</td>
+                    <td class="year">2024</td>
+                    <td>Nieufna wobec AI bystra analityczka antyterrorystka odkrywa, że może ona być jej jedyną szansą, gdy misja schwytania zbuntowanego robota nie idzie zgodnie z planem.</td>
+                    <td>Sci-Fi, Akcja</td>
+                </tr>
+                
+                <tr data-genres="Tajemnica,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/nWtySDlffTfwAa0rSfq61o33ZXV.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/nWtySDlffTfwAa0rSfq61o33ZXV.jpg')"></td>
+                    <td>Memento</td>
+                    <td class="year">2000</td>
+                    <td>Mieszkający w San Francisco detektyw ubezpieczeniowy, Leonard Shelby, w wyniku wypadku traci tzw. pamięć krótkotrwałą. Wie, kim jest i pamięta wszystko sprzed wypadku, ale błyskawicznie zapomina o tym, co wydarzyło się przed chwilą. Nie wie gdzie był, co robił i planował. Przy dłuższej rozmowie zapomina od czego się zaczęła. Powracające wspomnienia śmierci żony powodują, że nie daje za wygraną. Notatki, zdjęcia i tatuaże zastępują mu pamięć. Jedyną motywacją do życia jest obsesyjne pragnienie zemsty na mordercy ukochanej kobiety.</td>
+                    <td>Tajemnica, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Kryminał,Dramat,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/qWG1nSFlp4oNwSSTCPk3Q3n4FlD.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/qWG1nSFlp4oNwSSTCPk3Q3n4FlD.jpg')"></td>
+                    <td>The Silence Of The Lambs</td>
+                    <td class="year">1991</td>
+                    <td>Psychopata porywa i morduje młode kobiety na środkowym zachodzie. Wierząc, że w ujęciu tego mordercy dopomoże tylko inny przestępca, F.B.I. wysyła agentkę Clarice Starling (Jodie Foster) na wywiad z obłąkanym więźniem, który może dostarczyć psychologicznych przesłanek i tropów do kolejnych działań zabójcy. Więzień, psychiatra, dr. Hannibal Lecter (Anthony Hopkins) jest genialnym mordercą-kanibalem, który pomoże Agentce Starling, jeżeli ona będzie karmić jego chorą ciekawość detalami ze swojego skomplikowanego życia. Ta pokręcona relacja zmusza Starling nie tylko do konfrontacji z jej psychicznymi demonami, ale doprowadza ją również do spotkania twarzą w twarz z szalonym, ohydnym mordercą, wcieleniem zła tak potężnym, że nie będzie miała odwagi - ani siły - by go zatrzymać!  [opis dystrybutora dvd]</td>
+                    <td>Kryminał, Dramat, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Thriller,Kryminał,Dramat,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/rs43v4lDadJzsqCh0BEGFLMt5zx.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/rs43v4lDadJzsqCh0BEGFLMt5zx.jpg')"></td>
+                    <td>The Marsh Kings Daughter</td>
+                    <td class="year">2023</td>
+                    <td>Pozornie zwyczajne życie Heleny skrywa mroczną tajemnicę. Jest córką niesławnego „króla bagien”, którego historia wstrząsnęła całym krajem. Mężczyzna znęcał się nad swoją rodziną, którą przez wiele lat przetrzymywał na odludziu. Gdy trafił za kratki, Helenie udało się rozpocząć nowe życie, jednak przeszłość zaczyna się o nią upominać. Tym razem w niebezpieczeństwie jest cała jej rodzina.</td>
+                    <td>Thriller, Kryminał, Dramat, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Thriller,Tajemnica">
+                    <td><img src="https://image.tmdb.org/t/p/w200/zidpx5K0YgKgnSGu5pY9EDlldCD.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/zidpx5K0YgKgnSGu5pY9EDlldCD.jpg')"></td>
+                    <td>The Killing Of A Sacred Deer</td>
+                    <td class="year">2017</td>
+                    <td>Steven (Colin Farrell) jest wybitnym kardiochirurgiem, a jego żona, Anna (Nicole Kidman), szanowaną okulistką. Mają dwójkę dzieci: 14-letnią Kim (Raffey Cassidy) i 12-letniego Boba (Sunny Suljic). Są zamożni, zdrowi i toczą szczęśliwe, rodzinne życie. Steven przyjaźni się z 16-letnim Martinem (Barry Keoghan), który nie ma ojca i którego niejako przyjął pod swoje skrzydła. Pewnego dnia Steven przedstawia chłopaka swojej rodzinie. Od tego czasu sprawy przybierają nieoczekiwany, katastrofalny w skutkach obrót. Idealny świat zamienia się w chaos. Steven zmuszony zostanie do złożenia szokującej ofiary lub zaryzykowania utraty wszystkiego, co ma.  [opis dystrybutora dvd]</td>
+                    <td>Dramat, Thriller, Tajemnica</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Sci-Fi,Akcja">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hTm3t6aSH4EC5Woisnwp8wjcEKQ.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hTm3t6aSH4EC5Woisnwp8wjcEKQ.jpg')"></td>
+                    <td>The Hunger Games The Ballad Of Songbirds Snakes</td>
+                    <td class="year">2023</td>
+                    <td>Każda saga ma swój początek, a każdy bunt potrzebuje pierwszej iskry. Oto Dziesiąte Głodowe Igrzyska. W Kapitolu osiemnastoletni Coriolanus Snow zamierza skorzystać z szansy, jaką jest rola mentora i zdobyć sławę. Potężny niegdyś ród Snowów podupadł i przyszłość Coriolanusa zależy od tego, czy zdoła pokonać konkurentów. Tyle że fortuna nie bardzo mu sprzyja, bo otrzymuje poniżające zadanie. Zostaje mentorem Lucy Gray Baird, dziewczyny z Dystryktu Dwunastego, najbiedniejszego z biednych. Ich losy będą od teraz nierozerwalnie ze sobą splecione – każda decyzja, którą podejmie Snow, może prowadzić do sukcesu lub porażki, triumfu lub klęski. Na arenie rozgrywa się walka na śmierć i życie. Poza areną w Coriolanusie zaczyna budzić się współczucie dla skazanej na zgubę trybutki…</td>
+                    <td>Dramat, Sci-Fi, Akcja</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Historyczny">
+                    <td><img src="https://image.tmdb.org/t/p/w200/qnRaum8k0HqGRml2i7OawFqUtEb.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/qnRaum8k0HqGRml2i7OawFqUtEb.jpg')"></td>
+                    <td>Chariots of Fire</td>
+                    <td class="year">1981</td>
+                    <td>Oparta na autentycznych wydarzeniach historia dwóch młodych sportowców. Eric Liddell jest pobożnym szkockim katolikiem. Harold M. Abrahams to ambitny Anglik żydowskiego pochodzenia, który za wszelką cenę pragnie się zasymilować. Studiuje w Cambridge i wytrwale zabiega o aprobatę kolegów. Pierwszy z nich biegnie "ku chwale Jezusa", drugi - by zdobyć sławę. Wyścig na 100 metrów wygrywa Liddell, ale nieoczekiwanie pojawiają się okoliczności uniemożliwiające dalszą rywalizację.</td>
+                    <td>Dramat, Historyczny</td>
+                </tr>
+                
+                <tr data-genres="Akcja,Przygodowy,Thriller,Sci-Fi">
+                    <td><img src="https://image.tmdb.org/t/p/w200/tGtU2y5SGo7mPJu5x5s4HcsuXkE.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/tGtU2y5SGo7mPJu5x5s4HcsuXkE.jpg')"></td>
+                    <td>James Bond Moonraker</td>
+                    <td class="year">1979</td>
+                    <td>Uprowadzony zostaje prom kosmiczny o nazwie "Moonraker". Śledztwo powierzone zostaje Jamesowi Bondowi (Roger Moore). Wszystkie ślady prowadzą do milionera Draxa (Michael Lonsdale). Chce on na orbitalnej stacji wyhodować nową rasę ludzi, a dotychczasową populację zniszczyć bronią chemiczną. Wraz z piękną panią naukowiec z NASA, Holly Goodhead (Lois Chiles), Bond musi powstrzymać Draxa przed unicestwieniem całej ludzkości i znowu przyjdzie mu się zmierzyć ze swym starym wrogiem o przydomku "Szczęki" (Richard Kiel).</td>
+                    <td>Akcja, Przygodowy, Thriller, Sci-Fi</td>
+                </tr>
+                
+                <tr data-genres="Animacja,Dramat,Historyczny">
+                    <td><img src="https://image.tmdb.org/t/p/w200/5nek96vtBaDbTYxEZFkzgvogO6e.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/5nek96vtBaDbTYxEZFkzgvogO6e.jpg')"></td>
+                    <td>The Peasants</td>
+                    <td class="year">2023</td>
+                    <td>Na tle zmieniających się pór roku i sezonowych prac polowych rozgrywają się losy rodziny Borynów i pięknej, tajemniczej Jagny. To właśnie kobiety, w szczególności tragiczna postać Jagny, znajdą się w sercu fabuły. Unikalny mikroświat wiejskiej wspólnoty stanie się pretekstem do opowiedzenia uniwersalnej i niesamowicie aktualnej historii. Historii o tragicznej miłości i życiu w małej społeczności, gdzie reguły i brutalne zasady gry wyznaczają każdemu określone miejsce w grupie, a wyjście poza ciasne ramy grozi upokorzeniem i odrzuceniem.</td>
+                    <td>Animacja, Dramat, Historyczny</td>
+                </tr>
+                
+                <tr data-genres="Thriller,Tajemnica,Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/fWPFHdTBp4jLZIYvmY66ffwNuYA.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/fWPFHdTBp4jLZIYvmY66ffwNuYA.jpg')"></td>
+                    <td>Knock At The Cabin</td>
+                    <td class="year">2023</td>
+                    <td>Film powstał na podstawie bestsellerowej powieści „The Cabin at the End of the World” autorstwa Paula Tremblaya. Fabuła filmu koncentruje się na losach Erica i Adrew, małżeństwa, które wspólnie ze swoją kilkuletnią adoptowaną córką jedzie na wakacje do domku letniskowego. Ich sielski urlop zostaje przerwany, gdy uzbrojona grupa na czele z Leonardem wkracza w ich życie. Mężczyźni muszą zmierzyć się z mrożącym krew w żyłach wyzwaniem, które zdaniem napastników ocali ludzkość przed apokalipsą.</td>
+                    <td>Thriller, Tajemnica, Horror</td>
+                </tr>
+                
+                <tr data-genres="Horror,Tajemnica,Fantasy">
+                    <td><img src="https://image.tmdb.org/t/p/w200/vZVEUPychdvZLrTNwWErr9xZFmu.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/vZVEUPychdvZLrTNwWErr9xZFmu.jpg')"></td>
+                    <td>The Watchers</td>
+                    <td class="year">2024</td>
+                    <td>Kiedy 28-letnia artystka Mina znajduje schronienie po utknięciu w rozległym, nietkniętym lesie w zachodniej Irlandii, nieświadomie zostaje uwięziona wraz z trójką nieznajomych, którzy są obserwowani i prześladowani przez tajemnicze stworzenia każdej nocy.</td>
+                    <td>Horror, Tajemnica, Fantasy</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/x3jgHt1CcaVCUAoQdKROhONl7Ko.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/x3jgHt1CcaVCUAoQdKROhONl7Ko.jpg')"></td>
+                    <td>James Bond A View To A Kill</td>
+                    <td class="year">1985</td>
+                    <td>W filmie, w którym Roger Moore żegna się z postacią Bonda, agent musi stawić czoła aż dwóm śmiertelnie niebezpiecznym przeciwnikom: niezwykle inteligentnemu Maxowi Zorinowi - efektowi nazistowskich doświadczeń genetycznych, w rolę którego wcielił się Christopher Walken i jego pięknej acz kontrowersyjnej towarzyszce May Day wspaniale zagranej przez Grace Jones.  Akcja "Zabójczego Widoku" rozpoczyna się w arktycznej Rosji i obfituje w mrożące krew w żyłach pościgi na skuterach śnieżnych, nartach i szaleńcze loty helikopterów. Bond jest ratowany przez piękną agentkę Tajnych Służb Kimberley Jones (Mary Stavins), która pojawia się jakby wprost spod lodu. Następnie przenosimy się do Paryża, gdzie May Day dokonuje spektakularnego wyczynu skacząc ze spadochronem z Wieży Eiffle'a, scena finałowa natomiast rozgrywa się na szczycie słynnego mostu Golden Gate w San Francisco i stanowi prawdziwie "Zabójczy Widok".</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/27UPALw4mKPHy2etk7vpBEHPwWY.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/27UPALw4mKPHy2etk7vpBEHPwWY.jpg')"></td>
+                    <td>James Bond Die Another Day</td>
+                    <td class="year">2002</td>
+                    <td>Pierce Brosnan kolejny raz wciela się w postać nieustraszonego agenta 007 w gwałtownie podnoszącym poziom adrenaliny, jubileuszowym (już 20.!) filmie z serii o przygodach Jamesa Bonda. Akcja przenosi się z ciemnej celi w północnokoreańskim więzieniu, aż po piękne kubańskie plaże. Z pomocą amerykańskiej agentki Bond musi powstrzymać niebezpiecznego szaleńca, którego tajna, diaboliczna broń ma rzucić świat na kolana.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Przygodowy,Akcja,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/a2WSO0WgcmJik3GaXXZbrrkPxXa.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/a2WSO0WgcmJik3GaXXZbrrkPxXa.jpg')"></td>
+                    <td>James Bond GoldenEye</td>
+                    <td class="year">1995</td>
+                    <td>James Bond triumfalnie powraca w przygodach, które jak nigdy dotąd łączą w sobie porywającą akcję, mrożące krew w żyłach popisy kaskaderskie i specyficzny humor. W roli super agenta 007 debiutuje Pierce Brosnan, któremu towarzyszą dwie piękne kobiety Izabella Scorupco i Famke Janssen.  Bond ma nowego, śmiertelnego wroga, z którym musi się zmierzyć w swej misji. Jego perfidny przeciwnik kradnie ściśle tajny helikopter i najnowszą Sowiecką broń zwaną "GoldenEye", przy pomocy której chce zniszczyć cały zachodni świat. Tylko James Bond może zapobiec nieszczęściu.</td>
+                    <td>Przygodowy, Akcja, Thriller</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/yAiJlASIXC306qpqe5NZX2GgVlQ.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/yAiJlASIXC306qpqe5NZX2GgVlQ.jpg')"></td>
+                    <td>Children Of A Lesser God</td>
+                    <td class="year">1986</td>
+                    <td>James Leeds (William Hurt), ambitny i pełen ideałów nauczyciel, przybywa do szkoły dla głuchoniemych w stanie Maine. Nowy pedagog stosuje niekonwencjonalne metody nauczania, co nie przysparza mu sympatii uczniów ani popularności wśród pozostałych wykładowców. Wielu spośród jego głuchoniemych od urodzenia podopiecznych wcale nie chce być częścią wrogiego im, jak sądzą, świata ludzi zdrowych. Do nich zalicza się pracująca w szkole jako sprzątaczka Sarah Norman (Marlee Matlin). Kiedyś należała ona do najzdolniejszych uczennic, lecz teraz odmawia nauki mówienia i czytania. Początkowo James próbuje w stosunku do Sarah sprawdzić się jako pedagog i nakłonić ją do nadrabiania zaległości w tych dziedzinach. Po pewnym czasie zakochuje się w swojej uczennicy, a ona odwzajemnia jego zainteresowanie. Scenariusz filmu powstał na podstawie sztuki Marka Medoffa. Za rolę Sarah głuchoniema aktorka Marlee Matlin uhonorowana została nagrodą Oscara.</td>
+                    <td>Dramat, Romans</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Horror">
+                    <td><img src="https://image.tmdb.org/t/p/w200/hS4GYkYpN1rfl4GIxyc02sCyfAj.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/hS4GYkYpN1rfl4GIxyc02sCyfAj.jpg')"></td>
+                    <td>I Saw The TV Glow</td>
+                    <td class="year">2024</td>
+                    <td>Teenager Owen is just trying to make it through life in the suburbs when his classmate introduces him to a mysterious late-night TV show — a vision of a supernatural world beneath their own. In the pale glow of the television, Owen’s view of reality begins to crack.</td>
+                    <td>Dramat, Horror</td>
+                </tr>
+                
+                <tr data-genres="Dramat,Przygodowy,Sci-Fi,Romans">
+                    <td><img src="https://image.tmdb.org/t/p/w200/2UgnZ8NdMxK9OpZzdmqO6kx1Zfj.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/2UgnZ8NdMxK9OpZzdmqO6kx1Zfj.jpg')"></td>
+                    <td>The Fountain</td>
+                    <td class="year">2006</td>
+                    <td>Film opowiada trzy historie. Pierwsza dzieje się w XVI wieku. Hiszpański konkwistador Tomas Creo z polecenia królowej, na punkcie której szaleje, poszukuje legendarnego Drzewa Życia. Druga dzieje się współcześnie. Tomas Creo, naukowiec, maniakalnie poszukuje lekarstwa dla swojej chorej na raka żony. Trzecia to już wiek XXVI. Astronauta Tom próbuje pojąć tajemnicę życia i odpowiedzieć na pytania postawione przez jego poprzednie wcielenia: Co byłoby, gdybym mógł żyć wiecznie i kochać wiecznie tę samą kobietę?</td>
+                    <td>Dramat, Przygodowy, Sci-Fi, Romans</td>
+                </tr>
+                
+                <tr data-genres="Horror,Thriller">
+                    <td><img src="https://image.tmdb.org/t/p/w200/o5pcDZaA9Up0X612os34JNCRX6j.jpg" alt="Okładka" style="width: 100px; cursor: pointer;" onclick="showPosterModal('https://image.tmdb.org/t/p/w200/o5pcDZaA9Up0X612os34JNCRX6j.jpg')"></td>
+                    <td>In A Violent Nature</td>
+                    <td class="year">2024</td>
+                    <td>Tajemnicze zmartwychwstanie, szaleństwo i zemsta nieumarłego potwora na odległym pustkowiu uwalniają nowego, legendarnego zabójcę po tym, jak z zawalonej wieży przeciwpożarowej, w której gniło jego ciało, zostaje wyjęty medalion.</td>
+                    <td>Horror, Thriller</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="posterModal" tabindex="-1" role="dialog" aria-labelledby="posterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="posterModalLabel">Okładka Filmu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImg" src="" alt="Okładka" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
