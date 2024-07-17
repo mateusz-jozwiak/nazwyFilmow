@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CouchDB Frontend</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <div class="container">
+    <h1 class="text-3xl font-bold mb-4">CouchDB Frontend</h1>
+
+    <div class="card bg-white shadow-md rounded p-4 mb-4">
+      <h2 class="text-xl font-semibold mb-2">Add Entry</h2>
+      <form id="addForm">
+        <div class="mb-4">
+          <label for="italian_name" class="block text-sm font-medium text-gray-700">Italian Name</label>
+          <input type="text" id="italian_name" name="italian_name" class="input input-bordered w-full">
+        </div>
+        <div class="mb-4">
+          <label for="polish_name" class="block text-sm font-medium text-gray-700">Polish Name</label>
+          <input type="text" id="polish_name" name="polish_name" class="input input-bordered w-full">
+        </div>
+        <div class="mb-4">
+          <label for="wyrazenie" class="block text-sm font-medium text-gray-700">Wyrazenie</label>
+          <input type="text" id="wyrazenie" name="wyrazenie" class="input input-bordered w-full">
+        </div>
+        <div class="mb-4">
+          <label for="czasownik" class="block text-sm font-medium text-gray-700">Czasownik</label>
+          <input type="text" id="czasownik" name="czasownik" class="input input-bordered w-full">
+        </div>
+        <div class="mb-4">
+          <label for="slowko" class="block text-sm font-medium text-gray-700">Slowko</label>
+          <input type="text" id="slowko" name="slowko" class="input input-bordered w-full">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Entry</button>
+      </form>
+    </div>
+
+    <div class="card bg-white shadow-md rounded p-4">
+      <h2 class="text-xl font-semibold mb-2">Entries</h2>
+      <div id="entries"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const username = 'admin';
+    const password = 'Roorback32145!?';
+    const dbUrl = 'http://65.109.228.144:5984/notes';
+    
+    const addForm = document.getElementById('addForm');
+    const entriesDiv = document.getElementById('entries');
+
+    // Function to load entries from CouchDB
+    const loadEntries = async () => {
+      try {
+        const response = await axios.get(`${dbUrl}/_all_docs?include_docs=true`, {
+          auth: {
+            username: username,
+            password: password
+          }
+        });
+        const entries = response.data.rows.map(row => row.doc);
+        displayEntries(entries);
+      } catch (error) {
+        console.error('Error loading entries:', error);
+      }
+    };
+
+    // Function to display entries
+    const displayEntries = (entries) => {
+      entriesDiv.innerHTML = '';
+      entries.forEach(entry => {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'p-4 border-b border-gray-200';
+        entryDiv.innerHTML = `
+          <p><strong>Italian Name:</strong> ${entry.italian_name}</p>
+          <p><strong>Polish Name:</strong> ${entry.polish_name}</p>
+          <p><strong>Wyrazenie:</strong> ${entry.options.wyrazenie}</p>
+          <p><strong>Czasownik:</strong> ${entry.options.czasownik}</p>
+          <p><strong>Slowko:</strong> ${entry.options.slowko}</p>
+          <button class="btn btn-secondary btn-sm" onclick="editEntry('${entry._id}', '${entry._rev}')">Edit</button>
+          <button class="btn btn-error btn-sm" onclick="deleteEntry('${entry._id}', '${entry._rev}')">Delete</button>
+        `;
+        entriesDiv.appendChild(entryDiv);
+      });
+    };
+
+    // Function to add a new entry
+    addForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const italian_name = addForm.italian_name.value;
+      const polish_name = addForm.polish_name.value;
+      const wyrazenie = addForm.wyrazenie.value;
+      const czasownik = addForm.czasownik.value;
+      const slowko = addForm.slowko.value;
+
+      try {
+        await axios.post(dbUrl, {
+          italian_name,
+          polish_name,
+          options: { wyrazenie, czasownik, slowko }
+        }, {
+          auth: {
+            username: username,
+            password: password
+          }
+        });
+        addForm.reset();
+        loadEntries();
+      } catch (error) {
+        console.error('Error adding entry:', error);
+      }
+    });
+
+    // Function to delete an entry
+    const deleteEntry = async (id, rev) => {
+      try {
+        await axios.delete(`${dbUrl}/${id}?rev=${rev}`, {
+          auth: {
+            username: username,
+            password: password
+          }
+        });
+        loadEntries();
+      } catch (error) {
+        console.error('Error deleting entry:', error);
+      }
+    };
+
+    // Function to edit an entry
+    const editEntry = async (id, rev) => {
+      const italian_name = prompt('Enter new Italian Name:');
+      const polish_name = prompt('Enter new Polish Name:');
+      const wyrazenie = prompt('Enter new Wyrazenie:');
+      const czasownik = prompt('Enter new Czasownik:');
+      const slowko = prompt('Enter new Slowko:');
+
+      try {
+        await axios.put(`${dbUrl}/${id}`, {
+          _id: id,
+          _rev: rev,
+          italian_name,
+          polish_name,
+          options: { wyrazenie, czasownik, slowko }
+        }, {
+          auth: {
+            username: username,
+            password: password
+          }
+        });
+        loadEntries();
+      } catch (error) {
+        console.error('Error editing entry:', error);
+      }
+    };
+
+    // Load entries on page load
+    loadEntries();
+  </script>
+</body>
+</html>
